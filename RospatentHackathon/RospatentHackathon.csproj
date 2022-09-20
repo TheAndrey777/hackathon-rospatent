@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\cubes.png" />
 	  <None Remove="Resources\Images\search.svg" />
 	</ItemGroup>
 

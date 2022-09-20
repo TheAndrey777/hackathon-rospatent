@@ -2,19 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.PatentSearchPage"
-             Title="PatentSearch">
-    <VerticalStackLayout Spacing="30" Padding="10">
-        <Label x:Name="header" Text="Выберите критерий для поиска документа" FontSize="18" />
-        <Picker x:Name="wayPicker" Title = "Критерий для поиска"
-                SelectedIndexChanged="PickerSelectedIndexChanged">
-            <Picker.Items>
-                <x:String></x:String>
-            </Picker.Items>
-        </Picker>
-        <Entry BackgroundColor="White" HeightRequest="40" WidthRequest="100" HorizontalOptions="Start"/>
-        <Entry BackgroundColor="White" HeightRequest="40" WidthRequest="100" HorizontalOptions="Start"/>
-        <ImageButton Source="Resources/Images/search.svg"/>
+             Title="PatentSearch"
+             BackgroundColor="Yellow">
+    <VerticalStackLayout Spacing="30" Padding="20">
+        <HorizontalStackLayout Spacing="20" Padding="0">
+            <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
+            <Entry BackgroundColor="White" HeightRequest="50" MaximumWidthRequest="400" MinimumWidthRequest="150" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
+            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="30" Padding="0">
+            <VerticalStackLayout>
+                <Label Text="Номер документа" FontSize="22" HorizontalOptions="Start"/>
+                <Entry BackgroundColor="White" HeightRequest="40" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+            <Label Text="Номер заявки" FontSize="22" HorizontalOptions="Start"/>
+                <Entry BackgroundColor="White" HeightRequest="40" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <Grid ColumnDefinitions="Auto, *">
+        
+        
+        <!--<Image Source="Resources/Images/cubes.png" Aspect="AspectFit"/>-->
+    </Grid>
     </VerticalStackLayout>
-    
-    
 </ContentPage>
