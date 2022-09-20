@@ -5,7 +5,7 @@
              Title="Classifiers">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Sort 88"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

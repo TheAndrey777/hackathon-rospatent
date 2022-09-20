@@ -3,11 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.PatentSearchPage"
              Title="PatentSearch">
-    <VerticalStackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Entry BackgroundColor="Blue" MinimumWidthRequest="250"/>
-            <ImageButton Source="Resources/Images/search.svg"/>
-        </StackLayout>
+    <VerticalStackLayout Spacing="30" Padding="10">
+        <Label x:Name="header" Text="Выберите критерий для поиска документа" FontSize="18" />
+        <Picker x:Name="wayPicker" Title = "Критерий для поиска"
+                SelectedIndexChanged="PickerSelectedIndexChanged">
+            <Picker.Items>
+                <x:String></x:String>
+            </Picker.Items>
+        </Picker>
+        <Entry BackgroundColor="White" HeightRequest="40" WidthRequest="100" HorizontalOptions="Start"/>
+        <Entry BackgroundColor="White" HeightRequest="40" WidthRequest="100" HorizontalOptions="Start"/>
+        <ImageButton Source="Resources/Images/search.svg"/>
     </VerticalStackLayout>
     
     
