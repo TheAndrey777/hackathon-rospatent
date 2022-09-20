@@ -8,25 +8,23 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab Title="PatentSearch">
-
-            <ShellContent ContentTemplate="{DataTemplate views:PatentSearch}" />
+        <Tab Title="PatentSearchPage">
+            <ShellContent ContentTemplate="{DataTemplate views:PatentSearchPage}" />
         </Tab>
-        <Tab Title="SimilarDocuments">
-
-            <ShellContent ContentTemplate="{DataTemplate views:SimilarDocuments}" />
+        <Tab Title="SimilarDocumentsPage">
+            <ShellContent ContentTemplate="{DataTemplate views:SimilarDocumentsPage}" />
         </Tab>
-        <Tab Title="GeneticSearch">
-
-            <ShellContent ContentTemplate="{DataTemplate views:GeneticSearch}" />
+        <Tab Title="GeneticSearchPage">
+            <ShellContent ContentTemplate="{DataTemplate views:GeneticSearchPage}" />
         </Tab>
-        <Tab Title="NonPatentLiterature">
-
-            <ShellContent ContentTemplate="{DataTemplate views:NonPatentLiterature}" />
+        <Tab Title="NonPatentLiteraturePage">
+            <ShellContent ContentTemplate="{DataTemplate views:NonPatentLiteraturePage}" />
         </Tab>
-        <Tab Title="Classifiers">
-
-            <ShellContent ContentTemplate="{DataTemplate views:Classifiers}" />
+        <Tab Title="ClassifiersPage">
+            <ShellContent ContentTemplate="{DataTemplate views:ClassifiersPage}" />
+        </Tab>
+        <Tab Title="HSLPage">
+            <ShellContent ContentTemplate="{DataTemplate views:HslColorPage}" />
         </Tab>
     </TabBar>
 </Shell>

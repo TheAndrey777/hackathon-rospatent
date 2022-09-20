@@ -54,10 +54,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\ClassifiersPage.xaml.cs">
+	    <DependentUpon>ClassifiersPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\GeneticSearchPage.xaml.cs">
+	    <DependentUpon>GeneticSearchPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\NonPatentLiteraturePage.xaml.cs">
+	    <DependentUpon>NonPatentLiteraturePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PatentSearchPage.xaml.cs">
+	    <DependentUpon>PatentSearchPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SimilarDocumentsPage.xaml.cs">
+	    <DependentUpon>SimilarDocumentsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Controls\TestControl.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ClockPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\HslColorPage.xaml">
