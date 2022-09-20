@@ -5,25 +5,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RospatentHackathon.Views"
     xmlns:views="clr-namespace:RospatentHackathon.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
 
     <TabBar>
-        <Tab Title="PatentSearchPage">
+        <Tab Title="PatentSearchPage"
+             Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:PatentSearchPage}" />
         </Tab>
-        <Tab Title="SimilarDocumentsPage">
+        <Tab Title="SimilarDocumentsPage"
+             Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:SimilarDocumentsPage}" />
         </Tab>
-        <Tab Title="GeneticSearchPage">
+        <Tab Title="GeneticSearchPage"
+             Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:GeneticSearchPage}" />
         </Tab>
-        <Tab Title="NonPatentLiteraturePage">
+        <Tab Title="NonPatentLiteraturePage"
+             Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:NonPatentLiteraturePage}" />
         </Tab>
-        <Tab Title="ClassifiersPage">
+        <Tab Title="ClassifiersPage"
+             Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:ClassifiersPage}" />
         </Tab>
-        <Tab Title="HSLPage">
+        <Tab Title="HSLPage"
+             Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:HslColorPage}" />
         </Tab>
     </TabBar>

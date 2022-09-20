@@ -4,10 +4,10 @@
              x:Class="RospatentHackathon.Views.PatentSearchPage"
              Title="PatentSearch">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <StackLayout Orientation="Horizontal">
+            <Entry BackgroundColor="Blue" MinimumWidthRequest="250"/>
+            <ImageButton Source="Resources/Images/search.svg"/>
+        </StackLayout>
     </VerticalStackLayout>
     
     
