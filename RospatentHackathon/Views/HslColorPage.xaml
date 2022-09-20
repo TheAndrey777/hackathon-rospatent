@@ -24,5 +24,6 @@
                HorizontalOptions="Center" />
         <Slider Value="{Binding Luminosity}"
                 Margin="20,0,20,0" />
+        <Button Text="Random" Command="{Binding RandomColorCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

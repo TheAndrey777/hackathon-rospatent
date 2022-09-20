@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using RospatentHackathon.Commands;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace RospatentHackathon.ViewModels;
@@ -9,6 +10,23 @@ class HslViewModel : INotifyPropertyChanged
 
     private float _hue, _saturation, _luminosity;
     private Color _color;
+
+    public RelayCommand _randomColorCommand;
+    public RelayCommand RandomColorCommand
+    {
+        get
+        {
+            if(_randomColorCommand == null)
+                _randomColorCommand = new RelayCommand(param =>
+                {
+                    Random rnd = new Random();
+                    Hue = (float)rnd.NextDouble();
+                    Saturation = (float)rnd.NextDouble();
+                    Luminosity = (float)rnd.NextDouble();
+                });
+            return _randomColorCommand;
+        }
+    }
 
     public float Hue
     {
