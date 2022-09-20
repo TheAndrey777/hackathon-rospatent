@@ -4,10 +4,29 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RospatentHackathon.Views"
+    xmlns:views="clr-namespace:RospatentHackathon.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:HslColorPage}"/>
+    <TabBar>
+        <Tab Title="PatentSearch">
 
+            <ShellContent ContentTemplate="{DataTemplate views:PatentSearch}" />
+        </Tab>
+        <Tab Title="SimilarDocuments">
+
+            <ShellContent ContentTemplate="{DataTemplate views:SimilarDocuments}" />
+        </Tab>
+        <Tab Title="GeneticSearch">
+
+            <ShellContent ContentTemplate="{DataTemplate views:GeneticSearch}" />
+        </Tab>
+        <Tab Title="NonPatentLiterature">
+
+            <ShellContent ContentTemplate="{DataTemplate views:NonPatentLiterature}" />
+        </Tab>
+        <Tab Title="Classifiers">
+
+            <ShellContent ContentTemplate="{DataTemplate views:Classifiers}" />
+        </Tab>
+    </TabBar>
 </Shell>
