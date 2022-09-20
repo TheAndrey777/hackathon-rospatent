@@ -58,20 +58,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\ClassifiersPage.xaml.cs">
-	    <DependentUpon>ClassifiersPage.xaml</DependentUpon>
+	  <Compile Update="Views\Searches\ClassifiersSearchPage.xaml.cs">
+	    <DependentUpon>ClassifiersSearchPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\GeneticSearchPage.xaml.cs">
+	  <Compile Update="Views\Searches\GeneticSearchPage.xaml.cs">
 	    <DependentUpon>GeneticSearchPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\NonPatentLiteraturePage.xaml.cs">
-	    <DependentUpon>NonPatentLiteraturePage.xaml</DependentUpon>
+	  <Compile Update="Views\Searches\NonPatentLiteratureSearchPage.xaml.cs">
+	    <DependentUpon>NonPatentLiteratureSearchPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PatentSearchPage.xaml.cs">
+	  <Compile Update="Views\Searches\PatentSearchPage.xaml.cs">
 	    <DependentUpon>PatentSearchPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\SimilarDocumentsPage.xaml.cs">
-	    <DependentUpon>SimilarDocumentsPage.xaml</DependentUpon>
+	  <Compile Update="Views\Searches\SimilarDocumentsSearchPage.xaml.cs">
+	    <DependentUpon>SimilarDocumentsSearchPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -80,6 +80,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\HslColorPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SearchResultsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

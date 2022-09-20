@@ -13,21 +13,21 @@
              Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:PatentSearchPage}" />
         </Tab>
-        <Tab Title="SimilarDocumentsPage"
+        <Tab Title="SimilarDocumentsSearchPage"
              Icon="Resources/Images/search.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:SimilarDocumentsPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:SimilarDocumentsSearchPage}" />
         </Tab>
         <Tab Title="GeneticSearchPage"
              Icon="Resources/Images/search.svg">
             <ShellContent ContentTemplate="{DataTemplate views:GeneticSearchPage}" />
         </Tab>
-        <Tab Title="NonPatentLiteraturePage"
+        <Tab Title="NonPatentLiteratureSearchPage"
              Icon="Resources/Images/search.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:NonPatentLiteraturePage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:NonPatentLiteratureSearchPage}" />
         </Tab>
-        <Tab Title="ClassifiersPage"
+        <Tab Title="ClassifiersSearchPage"
              Icon="Resources/Images/search.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:ClassifiersPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:ClassifiersSearchPage}" />
         </Tab>
         <Tab Title="HSLPage"
              Icon="Resources/Images/search.svg">
