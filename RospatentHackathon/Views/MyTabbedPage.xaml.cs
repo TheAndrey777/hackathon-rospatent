@@ -1,8 +1,8 @@
 namespace RospatentHackathon.Views;
 
-public partial class HslColorPage : ContentPage
+public partial class MyTabbedPage : TabbedPage
 {
-	public HslColorPage()
+	public MyTabbedPage()
 	{
 		InitializeComponent();
 	}
