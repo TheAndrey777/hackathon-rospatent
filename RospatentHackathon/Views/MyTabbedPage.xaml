@@ -5,11 +5,23 @@
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             android:TabbedPage.ToolbarPlacement="Bottom">
     <NavigationPage Title="Поиск"
-                    IconImageSource="Recources/Images/dotnet_bot.svg">
+                    IconImageSource="Recources/Images/search.svg">
         <x:Arguments>
             <views:SelectSearchPage />
         </x:Arguments>
     </NavigationPage>
-    <views:SearchResultsPage />
-    <views:NonPatentLiteratureSearchPage />
+    
+    <NavigationPage Title="Результаты"
+                    IconImageSource="Recources/Images/results.svg">
+        <x:Arguments>
+            <views:SearchResultsPage />
+        </x:Arguments>
+    </NavigationPage>
+    
+    <NavigationPage Title="Документ"
+                    IconImageSource="Recources/Images/document.svg">
+        <x:Arguments>
+            <views:NonPatentLiteratureSearchPage />
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>
