@@ -5,7 +5,7 @@
              Title="SearchResultsPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Results List"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

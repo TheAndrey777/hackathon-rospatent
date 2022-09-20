@@ -1,8 +1,15 @@
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:RospatentHackathon.Views"
-            x:Class="RospatentHackathon.Views.MyTabbedPage">
-    <views:PatentSearchPage/>
-    <views:ClassifiersSearchPage />
+            x:Class="RospatentHackathon.Views.MyTabbedPage"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    <NavigationPage Title="Поиск"
+                    IconImageSource="Recources/Images/dotnet_bot.svg">
+        <x:Arguments>
+            <views:SelectSearchPage />
+        </x:Arguments>
+    </NavigationPage>
+    <views:SearchResultsPage />
     <views:NonPatentLiteratureSearchPage />
 </TabbedPage>
