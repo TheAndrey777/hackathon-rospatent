@@ -24,4 +24,9 @@ public class RelayCommand : ICommand
     {
         this.execute(parameter);
     }
+
+    public void UpdateCanExecute()
+    {
+        CanExecuteChanged?.Invoke(this, null);
+    }
 }

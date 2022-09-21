@@ -25,9 +25,9 @@ public class PatentSearchModel
 
     public override string ToString()
     {
-        return $"Request:{Request}\n.DocumentNumber:{DocumentNumber}\n" +
-            $".Author:{Author}\n.Patentee:{Patentee}\n.ApplicationNumber:{ApplicationNumber}\n" +
-            $".PublicationDateFromStr:{PublicationDateFromStr}\n.PublicationDateToStr:{PublicationDateToStr}\n" +
+        return $"Request:{Request}\nDocumentNumber:{DocumentNumber}\n" +
+            $"Author:{Author}\n.Patentee:{Patentee}\nApplicationNumber:{ApplicationNumber}\n" +
+            $"PublicationDateFromStr:{PublicationDateFromStr}\nPublicationDateToStr:{PublicationDateToStr}\n" +
             $"Sort:{Sort}\n";
     }
 }

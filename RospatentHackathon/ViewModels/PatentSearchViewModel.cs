@@ -90,13 +90,10 @@ class PatentSearchViewModel : INotifyPropertyChanged
         get
         {
             if (_searchCommand == null)
-                _searchCommand = new RelayCommand(async param =>
+                _searchCommand = new RelayCommand(param =>
                 {
                     _model.Page = 1;
-                    await App.Current.MainPage.DisplayAlert($"Тело запроса", $"{_model}", "Пиздец");
-                    SearchResultModel res = await HttpApiClient.Search(_model);
-                    Crutch.SearchResult.SetData(res);
-                    //var res = await HttpApiClient.Search();
+                    Crutch.SearchResult.SetSearchModelAndSearch(_model, "Поиск патентов");
                 });
             return _searchCommand;
         }
