@@ -34,7 +34,19 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding common.publication_date}"/>
+                        <Border Margin="8">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding snippet.title}" TextType="Html" FontAttributes="Bold" FontSize="Large"/>
+                                <AbsoluteLayout>
+                                    <HorizontalStackLayout Spacing="16">
+                                        <Label Text="{Binding id, StringFormat='Документ: {0}'}"/>
+                                        <Label Text="{Binding snippet.inventor}"/>
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding common.publication_date}" HorizontalOptions="End"/>
+                                </AbsoluteLayout>
+                                <Label Text="{Binding snippet.description}" TextType="Html" FontSize="Small"/>
+                            </VerticalStackLayout>
+                        </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
