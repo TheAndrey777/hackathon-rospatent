@@ -1,0 +1,16 @@
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:RospatentHackathon.Views"
+            x:Class="RospatentHackathon.Views.MyTabbedPage"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    <NavigationPage Title="Поиск"
+                    IconImageSource="Recources/Images/search.svg"
+                    NavigationPage.HasNavigationBar="False">
+        <x:Arguments>
+            <views:SelectSearchPage />
+        </x:Arguments>
+    </NavigationPage>
+    <views:SearchResultsPage Title="Результаты" IconImageSource="Recources/Images/results.svg"/>
+    <views:DocumentViewPage Title="Документ"  IconImageSource="Recources/Images/document.svg"/>
+</TabbedPage>
