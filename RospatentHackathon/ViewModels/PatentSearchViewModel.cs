@@ -56,6 +56,15 @@ class PatentSearchViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+    public int SortIndex
+    {
+        get => (int)_model.Sort;
+        set
+        {
+            _model.Sort = (PatentSortEnum)value;
+            OnPropertyChanged();
+        }
+    }
     public DateTime PublicationDateFrom
     {
         get => _model.PublicationDateFrom;
@@ -81,15 +90,10 @@ class PatentSearchViewModel : INotifyPropertyChanged
         get
         {
             if (_searchCommand == null)
-                _searchCommand = new RelayCommand(async param =>
+                _searchCommand = new RelayCommand(param =>
                 {
-                    _model.Sort = PatentSortEnum.Relevance;
                     _model.Page = 1;
-                    await App.Current.MainPage.DisplayAlert($"Тело запроса", $"{_model}", "Пиздец");
-                    SearchResultModel res = await HttpApiClient.Search(_model);
-                    Crutch.SearchResult.SetData(res);
-                    await App.Current.MainPage.DisplayAlert($"{res.total}", $"Запрос \"{Request}\"", "Пиздец");
-                    //var res = await HttpApiClient.Search();
+                    Crutch.SearchResult.SetSearchModelAndSearch(_model, "Поиск патентов");
                 });
             return _searchCommand;
         }
@@ -111,6 +115,7 @@ class PatentSearchViewModel : INotifyPropertyChanged
                     ApplicationNumber = "";
                     PublicationDateFrom = new DateTime().AddYears(2000);
                     PublicationDateTo = DateTime.Today;
+                    SortIndex = 0;
                 });
             return _clearCommand;
         }

@@ -18,22 +18,22 @@ public partial class DocumentViewPage : ContentPage
     private async void DownloadDoc()
     {
         Document = await HttpApiClient.GetDocument("RU2358138C1_20090610");
-        title.Text = "Не выбран ни один документ";
+        title.Text = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
         if (Document == null) return;
-        autor_area.Text = "Автор: " + Document.biblio.ru.inventor[0].name;
+        autor_area.Text = "пїЅпїЅпїЅпїЅпїЅ: " + Document.biblio.ru.inventor[0].name;
         title.Text = Document.biblio.ru.title;
 
-        body.Text = "\nРеферат\n";
+        body.Text = "\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n";
         body.Text += StripHTML(Document.@abstract.ru.Replace("</p>", "\n"));
-        body.Text += "\nФункция\n";
+        body.Text += "\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n";
         body.Text += StripHTML(Document.claims.ru.Replace("</p>", "\n"));
-        body.Text += "\nОписание\n";
+        body.Text += "\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n";
         body.Text += StripHTML(Document.description.ru.Replace("</p>", "\n"));
 
 
 
 
-        date_area.Text = "Дата публикации: " + Document.common.application.filing_date;
+        date_area.Text = "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + Document.common.application.filing_date;
         Console.WriteLine(Document.@abstract);
         Console.WriteLine(Document.@abstract);
     }

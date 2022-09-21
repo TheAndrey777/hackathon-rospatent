@@ -1,4 +1,6 @@
-﻿namespace Rospatent;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+namespace Rospatent;
 
 public class Query
 {
@@ -6,17 +8,26 @@ public class Query
     public int limit { get; set; }
     public int offset { get; set; }
     public string sort { get; set; }
-    public int include_facets { get; } = 1;
+    //public int include_facets { get; } = 1;
     public QueryFilter filter { get; set; }
 }
 
 public class QueryFilter
 {
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public Ids ids { get; set; }
-    //public Authors authors { get; set; }
-    //public PatentHolders patent_holders { get; set; }
-    //public DatePublished date_published { get; set; }
-    //public Kind kind { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Authors authors { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public PatentHolders patent_holders { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public DatePublished date_published { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Kind kind { get; set; }
 }
 
 public class Kind
