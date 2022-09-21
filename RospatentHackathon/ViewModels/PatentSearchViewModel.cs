@@ -87,6 +87,7 @@ class PatentSearchViewModel : INotifyPropertyChanged
                     _model.Page = 1;
                     await App.Current.MainPage.DisplayAlert($"Тело запроса", $"{_model}", "Пиздец");
                     SearchResultModel res = await HttpApiClient.Search(_model);
+                    Crutch.SearchResult.SetData(res);
                     await App.Current.MainPage.DisplayAlert($"{res.total}", $"Запрос \"{Request}\"", "Пиздец");
                     //var res = await HttpApiClient.Search();
                 });

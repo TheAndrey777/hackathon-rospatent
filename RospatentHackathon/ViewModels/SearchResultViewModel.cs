@@ -10,11 +10,24 @@ public class SearchResultViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public SearchResultModel Data { get; private set; }
+    public SearchResultModel Data { get; private set; } = new SearchResultModel();
+    public int Total => Data.total;
+
+    public void SetData(SearchResultModel res)
+    {
+        Data = res;
+        Crutch.MyTab.GoToRead();
+        Update();
+    }
+
+    private void Update()
+    {
+        OnPropertyChanged(nameof(Total));
+    }
 
     public SearchResultViewModel()
     {
-        ViewModelsVault.SearchResult = this;
+        Crutch.SearchResult = this;
         //SearchResults.Add();
     }
 

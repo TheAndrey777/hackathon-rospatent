@@ -5,7 +5,7 @@
              Title="SearchResultsPage">
     <VerticalStackLayout>
         <Label 
-            Text="Results List"
+            Text="{Binding Total, StringFormat='Total: {0:F0}'}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
