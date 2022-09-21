@@ -7,12 +7,29 @@ public class Query
     public int offset { get; set; }
 }
 
+public class SimilarSearchQuery
+{
+    public string type_search { get; set; }
+    public string pat_id { get; set; }
+    public string pat_text { get; set; }
+    public int count { get; set; }
+}
+
 public class SearchResponse
 {
     public int total { get; set; }
     public int available { get; set; }
-    public List<object> hits { get; set; }
+    public List<Hit> hits { get; set; }
     public Timings timings { get; set; }
+}
+
+public class SimilarSearchResponse
+{
+    public int total { get; set; }
+    public int pages { get; set; }
+    public string next_page { get; set; }
+    public object prev_page { get; set; }
+    public List<Datum> data { get; set; }
 }
 
 public class Timings
@@ -53,6 +70,12 @@ public class Classification
     public List<Cpc> cpc { get; set; }
 }
 
+public class ShortClassification
+{
+    public string ipc { get; set; }
+    public string cpc { get; set; }
+}
+
 public class Document
 {
     public Common common { get; set; }
@@ -80,6 +103,20 @@ public class Common
     public List<Priority> priority { get; set; }
     public Application application { get; set; }
     public Classification classification { get; set; }
+}
+
+public class Datum
+{
+    public Common common { get; set; }
+    public Meta meta { get; set; }
+    public Biblio biblio { get; set; }
+    public List<Drawing> drawings { get; set; }
+    public string id { get; set; }
+    public string index { get; set; }
+    public string dataset { get; set; }
+    public double similarity { get; set; }
+    public double similarity_norm { get; set; }
+    public Snippet snippet { get; set; }
 }
 
 public class Cpc
@@ -143,7 +180,6 @@ public class Hit
     public Common common { get; set; }
     public Meta meta { get; set; }
     public Biblio biblio { get; set; }
-
     public List<Drawing> drawings { get; set; }
     public string id { get; set; }
     public string index { get; set; }
@@ -168,6 +204,11 @@ public class Ipc
     public string fullname { get; set; }
     public string @class { get; set; }
 }
+
+public class SimilarIpc
+{
+    public string ipc { get; set; }
+} 
 
 public class Meta
 {
@@ -202,7 +243,7 @@ public class Snippet
     public string applicant { get; set; }
     public string inventor { get; set; }
     public string patentee { get; set; }
-    public Classification classification { get; set; }
+    public ShortClassification classification { get; set; }
 }
 
 public class Source

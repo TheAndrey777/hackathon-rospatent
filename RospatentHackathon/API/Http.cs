@@ -6,12 +6,11 @@ namespace Http;
 
 public class HttpApiClient
 {
-    private const string ApiUrl = "https://searchplatform.gov.ru/patsearch/v0.2";
+    private const string ApiUrl = "https://searchplatform.rospatent.gov.ru/patsearch/v0.2";
     private static readonly HttpClient client = new HttpClient();
 
     static HttpApiClient()
     {
-        client.BaseAddress = new Uri(ApiUrl);
         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "7dba7140a9bd418c82c7976ee248f5a7");
     }
 
@@ -26,20 +25,41 @@ public class HttpApiClient
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-        var response = await client.PostAsync("/search", httpContent);
+        var response = await client.PostAsync(ApiUrl + "/search", httpContent);
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
             SearchResponse deserializedResponse = JsonSerializer.Deserialize<SearchResponse>(responseContent);
             return deserializedResponse;
         }
+        return null;
+    }
 
+    public static async Task<SimilarSearchResponse> SimilarSearch(String type, string query, int count)
+    {
+        var payload = new SimilarSearchQuery
+        {
+            type_search = type,
+            count = count,
+        };
+        if (type == "id_search") payload.pat_id = query; else payload.pat_text = query;
+
+        var jsonPayload = JsonSerializer.Serialize(payload);
+        var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+        var response = await client.PostAsync(ApiUrl + "/similar_search'", httpContent);
+        if (response.IsSuccessStatusCode)
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            SimilarSearchResponse deserializedResponse = JsonSerializer.Deserialize<SimilarSearchResponse>(responseContent);
+            return deserializedResponse;
+        }
         return null;
     }
 
     public static async Task<Document> GetDocument(String id)
     {
-        var response = await client.GetAsync("/docs/" + id);
+        var response = await client.GetAsync(ApiUrl + "/docs/" + id);
         if (response.IsSuccessStatusCode)
         {
             string responseContent = await response.Content.ReadAsStringAsync();
