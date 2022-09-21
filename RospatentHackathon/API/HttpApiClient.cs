@@ -23,6 +23,33 @@ public class HttpApiClient
             qn = query.Request,
             limit = query.DocumentsLimit,
             offset = query.DocumentsLimit * (query.Page - 1),
+            filter = new QueryFilter
+            {
+                ids = new Ids
+                {
+                    values = new List<string> { query.Patentee },
+                },
+                authors = new Authors
+                {
+                    values = new List<string> { query.Author },
+                },
+                patent_holders = new PatentHolders
+                {
+                    values = new List<string> { query.Author },
+                },
+                date_published = new DatePublished
+                {
+                    range = new Rospatent.Range 
+                    { 
+                        gte = query.PublicationDateFromStr,
+                        lte = query.PublicationDateToStr,
+                    }
+                },
+                kind = new Kind
+                {
+                    values = new List<string> { query.ApplicationNumber }
+                }
+            }
         };
 
         switch (query.Sort)
