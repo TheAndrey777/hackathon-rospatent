@@ -13,5 +13,11 @@ internal class PatentSearchModel
     public string Author { get; set; }
     public string Patentee { get; set; }
     public string Applicant { get; set; }
-    public string PublicationDateFrom { get; set; }
+    public PatentSortEnum Sort { get; set; }
+
+    public DateTime PublicationDateFrom { get; set; }
+    public string PublicationDateFromStr => PublicationDateFrom.ToString("yyyyMMdd");
+
+    public DateTime PublicationDateTo{ get; set; }
+    public string PublicationDateToStr => PublicationDateTo.ToString("yyyyMMdd");
 }

@@ -5,5 +5,5 @@ public partial class PatentSearchPage : ContentPage
 	public PatentSearchPage()
 	{
 		InitializeComponent();
-	}
+    }
 }

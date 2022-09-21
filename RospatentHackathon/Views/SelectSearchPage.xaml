@@ -2,20 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.SelectSearchPage"
-             Title="SelectSearchPage"
-             NavigationPage.HasNavigationBar="False">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Button Clicked="Button_Clicked" Grid.Column="0"/>
-        <Button Clicked="Button_Clicked2" Grid.Column="1"/>
-        <Button Clicked="Button_Clicked3" Grid.Column="2"/>
-    </Grid>
+             Title="SelectSearchPage">
+    <ScrollView>
+        <Grid RowSpacing="12" ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Clicked="Button_Clicked" Grid.Column="0"/>
+            <Button Clicked="Button_Clicked2" Grid.Column="1"/>
+            <Button Clicked="Button_Clicked3" Grid.Row="1"/>
+        </Grid>
+    </ScrollView>
 </ContentPage>

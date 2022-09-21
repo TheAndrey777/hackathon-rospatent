@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using RospatentHackathon.Models;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace RospatentHackathon.ViewModels;
@@ -6,43 +7,75 @@ namespace RospatentHackathon.ViewModels;
 class PatentSearchViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
+    private PatentSearchModel _model = new PatentSearchModel();
 
-    private string _patentName;
-    public string PatentName
+    public string Request
     {
-        get => _patentName;
+        get => _model.Request;
         set
         {
-            _patentName = value;
+            _model.Request = value;
             OnPropertyChanged();
         }
     }
-    
-    private string _documentNumber;
     public string DocumentNumber
     {
-        get => _documentNumber;
+        get => _model.DocumentNumber;
         set
         {
-            _documentNumber = value;
+            _model.DocumentNumber = value;
             OnPropertyChanged();
         }
     }
-    
-    private string _author;
     public string Author
     {
-        get => _author;
+        get => _model.Author;
         set
         {
-            _author = value;
+            _model.Author = value;
+            OnPropertyChanged();
+        }
+    }
+    public string Patentee
+    {
+        get => _model.Patentee;
+        set
+        {
+            _model.Patentee = value;
+            OnPropertyChanged();
+        }
+    }
+    public string Applicant
+    {
+        get => _model.Applicant;
+        set
+        {
+            _model.Applicant = value;
+            OnPropertyChanged();
+        }
+    }
+    public DateTime PublicationDateFrom
+    {
+        get => _model.PublicationDateFrom;
+        set
+        {
+            _model.PublicationDateFrom = value;
+            OnPropertyChanged();
+        }
+    }
+    public DateTime PublicationDateTo
+    {
+        get => _model.PublicationDateTo;
+        set
+        {
+            _model.PublicationDateFrom = value;
             OnPropertyChanged();
         }
     }
 
     public PatentSearchViewModel()
     {
-
+        _model.Sort = PatentSortEnum.Relevance;
     }
 
     public void OnPropertyChanged([CallerMemberName] string name = "") =>
