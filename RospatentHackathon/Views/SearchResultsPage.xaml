@@ -8,9 +8,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="48"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -41,8 +44,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Text="Назад" HorizontalOptions="Start"/>
-            <Button Text="Вперёд" HorizontalOptions="End" Grid.Column="1"/>
+            <Button Text="Назад" HorizontalOptions="Start" Command="{Binding PrevPageCommand}"/>
+            <Button Text="Вперёд" HorizontalOptions="End" Grid.Column="1" Command="{Binding NextPageCommand}"/>
         </Grid>
     </Grid>
 </ContentPage>

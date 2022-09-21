@@ -1,5 +1,6 @@
 ﻿using Http;
 using Rospatent;
+using RospatentHackathon.Commands;
 using RospatentHackathon.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -44,6 +45,7 @@ public class SearchResultViewModel : INotifyPropertyChanged
     }
 
     private PatentSearchModel _model;
+    private bool _loading = false;
 
     public void SetSearchModelAndSearch(PatentSearchModel model, string searchInfo)
     {
@@ -56,11 +58,54 @@ public class SearchResultViewModel : INotifyPropertyChanged
     {
         if(_model == null)
             return;
+        _loading = true;
         Crutch.MyTab.GoToRead();
         LoadedInfo = $"Загрузка..";
         Data = new SearchResultModel();
         Data = await HttpApiClient.Search(_model);
-        LoadedInfo = $"Showed {Data.Downloaded}/{Data.total}";
+        LoadedInfo = $"Showed {(_model.Page - 1) *_model.DocumentsLimit+1}-{(_model.Page - 1) * _model.DocumentsLimit+Data.Downloaded}" +
+                    $" из {Data.total}";
+        _loading = false;
+        UpdateButtons();
+    }
+
+    public RelayCommand _prevPageCommand;
+    public RelayCommand PrevPageCommand
+    {
+        get
+        {
+            if (_prevPageCommand == null)
+                _prevPageCommand = new RelayCommand(param =>
+                {
+                    _model.Page--;
+                    Search();
+                    UpdateButtons();
+                }, (param) => _model!=null&&_model.Page > 1 && !_loading);
+            return _prevPageCommand;
+        }
+    }
+
+    public RelayCommand _nextPageCommand;
+    public RelayCommand NextPageCommand
+    {
+        get
+        {
+            if (_nextPageCommand == null)
+                _nextPageCommand = new RelayCommand(param =>
+                {
+                    _model.Page++;
+                    Console.WriteLine($"modelPage:{_model.Page}");
+                    Search();
+                    UpdateButtons();
+                }, (param) => true && !_loading);
+            return _nextPageCommand;
+        }
+    }
+
+    private void UpdateButtons()
+    {
+        NextPageCommand.UpdateCanExecute();
+        PrevPageCommand.UpdateCanExecute();
     }
 
     public SearchResultViewModel()
