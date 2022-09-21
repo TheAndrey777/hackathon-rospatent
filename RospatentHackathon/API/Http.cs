@@ -15,7 +15,7 @@ public class HttpApiClient
         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "7dba7140a9bd418c82c7976ee248f5a7");
     }
 
-    public static async Task<PatentSearchResultModel> Search(String query, int limit, int page)
+    public static async Task<SearchResultModel> Search(String query, int limit, int page)
     {
         var payload = new Query
         {
@@ -30,7 +30,7 @@ public class HttpApiClient
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
-            PatentSearchResultModel deserializedResponse = JsonSerializer.Deserialize<PatentSearchResultModel>(responseContent);
+            SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
             return deserializedResponse;
         }
         return null;

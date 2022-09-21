@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RospatentHackathon.Models;
 
-internal class PatentSearchModel
+public class PatentSearchModel
 {
     public string Request { get; set; }
     public string DocumentNumber { get; set; }

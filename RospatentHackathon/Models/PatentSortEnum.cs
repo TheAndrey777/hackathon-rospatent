@@ -1,6 +1,6 @@
 ﻿namespace RospatentHackathon;
 
-internal enum PatentSortEnum
+public enum PatentSortEnum
 {
     Relevance,
     PublicationDateAsc,
