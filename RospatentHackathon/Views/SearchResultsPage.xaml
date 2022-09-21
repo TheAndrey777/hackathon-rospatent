@@ -4,9 +4,19 @@
              x:Class="RospatentHackathon.Views.SearchResultsPage"
              Title="SearchResultsPage">
     <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
         <Label 
             Text="{Binding Total, StringFormat='Total: {0:F0}'}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding SearchType, StringFormat='Total: {0:F0}'}"
+            VerticalOptions="Center" 
+            HorizontalOptions="End" />
     </VerticalStackLayout>
 </ContentPage>

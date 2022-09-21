@@ -16,5 +16,6 @@ public partial class DocumentViewPage : ContentPage
 	private async void DownloadDoc()
 	{
         Document = await HttpApiClient.GetDocument("RU2358138C1_20090610");
+		Console.WriteLine("Документ скачан");
     }
 }
