@@ -4,16 +4,13 @@
              xmlns:models="clr-namespace:RospatentHackathon.ViewModels"
              x:Class="RospatentHackathon.Views.PatentSearchPage"
              Title="PatentSearch">
-    <ContentPage.BindingContext>
-        <models:PatentSearchViewModel/>
-    </ContentPage.BindingContext>
     <ScrollView Padding="0">
     <VerticalStackLayout Spacing="30" Padding="10">
         <HorizontalStackLayout Spacing="20" Padding="0">
             <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
             <Entry FontFamily="RobotoFlex" BackgroundColor="White" HeightRequest="50" MaximumWidthRequest="400" MinimumWidthRequest="150" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
-            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
-        </HorizontalStackLayout>
+            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1" Command="{Binding SearchCommand}"/>
+            </HorizontalStackLayout>
         <Grid Padding="0" ColumnSpacing="10" ColumnDefinitions="Auto, *">
             <VerticalStackLayout Grid.Column="0">
                 <Label Text="Номер документа" FontSize="22" HorizontalOptions="Start"/>

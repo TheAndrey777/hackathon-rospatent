@@ -1,4 +1,5 @@
-﻿using RospatentHackathon.Commands;
+﻿using Http;
+using RospatentHackathon.Commands;
 using RospatentHackathon.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -80,10 +81,12 @@ class PatentSearchViewModel : INotifyPropertyChanged
         get
         {
             if (_searchCommand == null)
-                _searchCommand = new RelayCommand(param =>
+                _searchCommand = new RelayCommand(async param =>
                 {
                     _model.Sort = PatentSortEnum.Relevance;
                     _model.Page = 0;
+                    await App.Current.MainPage.DisplayAlert("Кнопка ебать", "Описание нахуй", "Пиздец");
+                    //var res = await HttpApiClient.Search();
                 });
             return _searchCommand;
         }
