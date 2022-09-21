@@ -56,6 +56,15 @@ class PatentSearchViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+    public string ApplicationNumber
+    {
+        get => _model.ApplicationNumber;
+        set
+        {
+            _model.ApplicationNumber = value;
+            OnPropertyChanged();
+        }
+    }
     public DateTime PublicationDateFrom
     {
         get => _model.PublicationDateFrom;
@@ -70,7 +79,7 @@ class PatentSearchViewModel : INotifyPropertyChanged
         get => _model.PublicationDateTo;
         set
         {
-            _model.PublicationDateFrom = value;
+            _model.PublicationDateTo = value;
             OnPropertyChanged();
         }
     }
@@ -85,11 +94,38 @@ class PatentSearchViewModel : INotifyPropertyChanged
                 {
                     _model.Sort = PatentSortEnum.Relevance;
                     _model.Page = 0;
-                    await App.Current.MainPage.DisplayAlert("Кнопка ебать", "Описание нахуй", "Пиздец");
+                    await App.Current.MainPage.DisplayAlert("Кнопка ебать", $"Запрос \"{Request}\"", "Пиздец");
                     //var res = await HttpApiClient.Search();
                 });
             return _searchCommand;
         }
+    }
+    
+    public RelayCommand _clearCommand;
+    public RelayCommand ClearCommand
+    {
+        get
+        {
+            if (_clearCommand == null)
+                _clearCommand = new RelayCommand(param =>
+                {
+                    _model = new PatentSearchModel();
+                    Request = "";
+                    DocumentNumber = "";
+                    Author = "";
+                    Patentee = "";
+                    Applicant = "";
+                    ApplicationNumber = "";
+                    PublicationDateFrom = new DateTime().AddYears(2000);
+                    PublicationDateTo = DateTime.Today;
+                });
+            return _clearCommand;
+        }
+    }
+
+    public PatentSearchViewModel()
+    {
+        ClearCommand.Execute(null);
     }
 
     public void OnPropertyChanged([CallerMemberName] string name = "") =>

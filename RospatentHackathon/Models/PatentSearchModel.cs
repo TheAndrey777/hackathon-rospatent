@@ -13,6 +13,7 @@ public class PatentSearchModel
     public string Author { get; set; }
     public string Patentee { get; set; }
     public string Applicant { get; set; }
+    public string ApplicationNumber { get; set; }
     public PatentSortEnum Sort { get; set; }
     public int DocumentsLimit { get; } = 5;
     public int Page { get; set; }

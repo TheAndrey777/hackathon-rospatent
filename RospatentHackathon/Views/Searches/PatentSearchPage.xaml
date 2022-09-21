@@ -8,55 +8,50 @@
         <VerticalStackLayout Spacing="30" Padding="10">
             <HorizontalStackLayout Spacing="20" Padding="0">
                 <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
-                
-            <Entry FontFamily="RobotoFlex" BackgroundColor="White" HeightRequest="50" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
-                    <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
+                <Entry FontFamily="RobotoFlex" Text="{Binding Request, Mode=TwoWay}" HeightRequest="50" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
             </HorizontalStackLayout>
-            
           
             <Grid Padding="0" ColumnSpacing="10" ColumnDefinitions="Auto, *">
                 <VerticalStackLayout Grid.Column="0">
                     <Label Text="Номер документа" FontSize="20" HorizontalOptions="Start"/>
-                    <Entry BackgroundColor="White" HeightRequest="30" WidthRequest="170" HorizontalOptions="Start"/>
+                    <Entry HeightRequest="30" Text="{Binding DocumentNumber, Mode=TwoWay}" WidthRequest="170" HorizontalOptions="Start"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Column="1">
                     <Label Text="Номер заявки" FontSize="20" HorizontalOptions="Start"/>
-                    <Entry BackgroundColor="White" HeightRequest="30" WidthRequest="170" HorizontalOptions="Start"/>
+                    <Entry HeightRequest="30" Text="{Binding ApplicationNumber, Mode=TwoWay}" WidthRequest="170" HorizontalOptions="Start"/>
                 </VerticalStackLayout>
             </Grid>
             <Grid ColumnDefinitions ="*, *" ColumnSpacing="10" RowSpacing="10">
                 <VerticalStackLayout>
                     <VerticalStackLayout Spacing="5" Grid.Column="0">
                         <Label Text ="Автор"/>
-                        <Entry BackgroundColor="White" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                        <Entry BackgroundColor="White" Text="{Binding Author, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
                     <VerticalStackLayout Spacing="5" Grid.Column="0">
                         <Label Text ="Заявитель"/>
-                        <Entry BackgroundColor="White" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                        <Entry BackgroundColor="White" Text="{Binding Applicant, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
                     <VerticalStackLayout Spacing="5" Grid.Column="0">
                         <Label Text ="Патентообладатель"/>
-                        <Entry BackgroundColor="White" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                        <Entry BackgroundColor="White" Text="{Binding Patentee, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
                     </VerticalStackLayout>
-
                 </VerticalStackLayout>
                 <VerticalStackLayout Padding ="10" Spacing="10" Grid.Column="1">
                     <Label Text="Дата публикации от:"/>
                     <Border>
-                        <DatePicker/>
+                        <DatePicker Date="{Binding PublicationDateFrom, Mode=TwoWay}"/>
                     </Border>
                     <VerticalStackLayout Spacing="20"></VerticalStackLayout>
                     <Label Text="Дата публикации до:"/>
                     <Border>
-                        <DatePicker/>
+                        <DatePicker Date="{Binding PublicationDateTo, Mode=TwoWay}"/>
                     </Border>
-                    <Button Text ="Очистить" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
+                    <Button Text ="Очистить" FontSize="16" BorderColor="Blue" BorderWidth="1" Command="{Binding ClearCommand}"/>
                 </VerticalStackLayout>
             </Grid>
-            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
+            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1" Command="{Binding SearchCommand}"/>
         </VerticalStackLayout>
-
     </ScrollView>
 </ContentPage>
