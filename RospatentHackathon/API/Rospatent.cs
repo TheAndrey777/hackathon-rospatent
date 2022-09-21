@@ -120,7 +120,7 @@ public class Document
     public Claims claims { get; set; }
     public Description description { get; set; }
     public List<Drawing> drawings { get; set; }
-    public string id { get; set; }
+    public string id { get; set; } 
     public string index { get; set; }
     public string dataset { get; set; }
     public List<object> prototype_docs { get; set; }
