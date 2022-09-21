@@ -3,10 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.DocumentViewPage"
              Title="DocumentViewPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView Padding="0">
+        <Grid>
+            <VerticalStackLayout>
+                <Label 
+                    Text="Welcome to .NET MAUI!"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+            
+            
+            <Label
+                    Text="Document Description"
+                    VerticalOptions="Fill" 
+                    HorizontalOptions="EndAndExpand"
+            />
+            
+            
+            <Grid VerticalOptions="End">
+                <Button
+                    Text="Back"
+                    HorizontalOptions="Start"                    
+                />
+                <Button
+                    Text="Forward"
+                    HorizontalOptions="End"                        
+                />
+            </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>
