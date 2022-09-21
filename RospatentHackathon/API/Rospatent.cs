@@ -6,7 +6,7 @@ public class Query
     public int limit { get; set; }
     public int offset { get; set; }
     public string sort { get; set; }
-    public int include_facets { get; set; }
+    public int include_facets { get; } = 1;
     public QueryFilter filter { get; set; }
 }
 
@@ -15,6 +15,24 @@ public class QueryFilter
     public Authors authors { get; set; }
     public PatentHolders patent_holders { get; set; }
     public Ids ids { get; set; }
+    public DatePublished date_published { get; set; }
+    public Kind kind { get; set; }
+}
+
+public class Kind
+{
+    public List<string> values { get; set; }
+}
+
+public class DatePublished
+{
+    public Range range { get; set; }
+}
+
+public class Range
+{
+    public string gte { get; set; }
+    public string lte { get; set; }
 }
 
 public class Authors
