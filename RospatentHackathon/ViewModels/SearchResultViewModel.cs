@@ -1,18 +1,20 @@
 ﻿using Rospatent;
+using RospatentHackathon.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace RospatentHackathon.ViewModels;
 
-class SearchResultViewModel : INotifyPropertyChanged
+public class SearchResultViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public ObservableCollection<Document> SearchResults { get; private set; } = new ObservableCollection<Document>();
+    public SearchResultModel Data { get; private set; }
 
     public SearchResultViewModel()
     {
+        ViewModelsVault.SearchResult = this;
         //SearchResults.Add();
     }
 

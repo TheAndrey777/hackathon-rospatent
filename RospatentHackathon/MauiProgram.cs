@@ -1,4 +1,7 @@
-﻿namespace RospatentHackathon;
+﻿using RospatentHackathon.ViewModels;
+using RospatentHackathon.Views;
+
+namespace RospatentHackathon;
 
 public static class MauiProgram
 {
@@ -14,7 +17,6 @@ public static class MauiProgram
 				fonts.AddFont("21002.ttf", "Robotoflex");
 				fonts.AddFont("21003.ttf", "AmstelvarRoman");
 			});
-
 		return builder.Build();
 	}
 }

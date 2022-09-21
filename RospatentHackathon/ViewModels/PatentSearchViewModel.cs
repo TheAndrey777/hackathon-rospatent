@@ -94,7 +94,8 @@ class PatentSearchViewModel : INotifyPropertyChanged
                 {
                     _model.Sort = PatentSortEnum.Relevance;
                     _model.Page = 0;
-                    await App.Current.MainPage.DisplayAlert("Кнопка ебать", $"Запрос \"{Request}\"", "Пиздец");
+                    await App.Current.MainPage.DisplayAlert($"{(ViewModelsVault.SearchResult == null ? "пиздец" : "лепота")}", $"Запрос \"{Request}\"", "Пиздец");
+                    SearchResultModel res = null;
                     //var res = await HttpApiClient.Search();
                 });
             return _searchCommand;
