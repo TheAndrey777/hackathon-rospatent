@@ -42,14 +42,13 @@
             </VerticalStackLayout>
                     <VerticalStackLayout Spacing="10" Grid.Column="1">
                         <Label Text="Дата публикации от:"/>
-                        <DatePicker Format="d" DateSelected="DateSelectedOT">
-                                                   
-                        </DatePicker>
+                        <DatePicker/>
                         <VerticalStackLayout Spacing="20"></VerticalStackLayout>
                         <Label Text="Дата публикации до:"/>
-                        <DatePicker Format="d" DateSelected="DateSelectedDO"/>
-                        <DatePicker/>
-                        </VerticalStackLayout>
+                        <Border>
+                            <DatePicker/>
+                        </Border>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
             </Grid>
             <Grid ColumnDefinitions="Auto, *">
