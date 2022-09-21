@@ -1,4 +1,5 @@
-﻿using Rospatent;
+﻿using Http;
+using Rospatent;
 using RospatentHackathon.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -28,7 +29,14 @@ public class SearchResultViewModel : INotifyPropertyChanged
     public SearchResultViewModel()
     {
         Crutch.SearchResult = this;
+        Test();
         //SearchResults.Add();
+    }
+
+    public async void Test()
+    {
+        var res = await HttpApiClient.GetDocument("RU2358138C1_20090610");
+        await App.Current.MainPage.DisplayAlert("", res.id, "OK");
     }
 
     public void OnPropertyChanged([CallerMemberName] string name = "") =>
