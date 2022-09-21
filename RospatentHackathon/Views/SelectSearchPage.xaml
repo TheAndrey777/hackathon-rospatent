@@ -14,7 +14,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Button Clicked="Button_Clicked" Grid.Column="0"/>
+        <ImageButton Clicked="Button_Clicked" Grid.Column="0" Source="Resources/Images/search.svg" BorderColor="Black" BorderWidth="2"/>
         <Button Clicked="Button_Clicked2" Grid.Column="1"/>
         <Button Clicked="Button_Clicked3" Grid.Column="2"/>
     </Grid>
