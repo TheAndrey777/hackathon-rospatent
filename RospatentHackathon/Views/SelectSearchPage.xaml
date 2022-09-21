@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.SelectSearchPage"
              Title="SelectSearchPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar ="False"
+             NavigationPage.HasBackButton="False">
     <ScrollView>
         <Grid RowSpacing="12" ColumnSpacing="12">
             <Grid.ColumnDefinitions>
