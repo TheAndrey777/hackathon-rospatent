@@ -9,12 +9,8 @@
         <VerticalStackLayout>
             <Button Text="Назад" Clicked="PS" FontSize="12" CornerRadius="0" BorderWidth="1"></Button>
         <VerticalStackLayout Spacing="10" Padding="10">
-
-
                 <HorizontalStackLayout Spacing="20" Padding="0">
                     <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
-
-
                     <Entry FontFamily="RobotoFlex"  HeightRequest="50" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
                 </HorizontalStackLayout>
                 <Grid Padding="0" ColumnSpacing="25" ColumnDefinitions="Auto, *">

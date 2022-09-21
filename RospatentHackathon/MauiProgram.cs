@@ -1,5 +1,6 @@
 ﻿using RospatentHackathon.ViewModels;
 using RospatentHackathon.Views;
+using System.Runtime.InteropServices;
 
 namespace RospatentHackathon;
 
@@ -17,6 +18,14 @@ public static class MauiProgram
 				fonts.AddFont("21002.ttf", "Robotoflex");
 				fonts.AddFont("21003.ttf", "AmstelvarRoman");
 			});
-		return builder.Build();
+#if WINDOWS
+		AllocConsole();
+#endif
+        Console.WriteLine("gfgfdg");
+        return builder.Build();
 	}
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    static extern bool AllocConsole();
 }
