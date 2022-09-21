@@ -50,16 +50,16 @@
                         <Border>
                             <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateTo}"/>
                         </Border>
-                        <Button Text ="Очистить" FontSize="16" BorderWidth="1"></Button>
+                        <Button Text ="Очистить" FontSize="16" Command="{Binding ClearCommand}" BorderWidth="1"></Button>
                     </VerticalStackLayout>
                 </Grid>
                 <Label Text="Тип сортировки: "/>
-                <Picker x:Name="SortPicker" Title = "Выберите тип: " HeightRequest="50">
+                <Picker x:Name="SortPicker" Title = "Выберите тип: " HeightRequest="75" SelectedIndex="{Binding SortIndex, Mode=TwoWay}">
                     <Picker.Items>
                         <x:String>По релевантности</x:String>
                         <x:String>По дате публикации (возр.)</x:String>
-                        <x:String>По дате регистрации (возр.)</x:String>
                         <x:String>По дате публикации (уб.)</x:String>
+                        <x:String>По дате регистрации (возр.)</x:String>
                         <x:String>По дате регистрации (уб.)</x:String>
                     </Picker.Items>
                 </Picker>
