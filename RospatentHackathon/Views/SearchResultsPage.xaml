@@ -5,8 +5,13 @@
              Title="SearchResultsPage"
              NavigationPage.HasNavigationBar ="False"
              NavigationPage.HasBackButton="False">
-    <VerticalStackLayout>
-        <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="48"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -22,7 +27,7 @@
             Margin="0,0,12,0"
             HorizontalOptions="End" />
         </Grid>
-        <ListView ItemsSource="{Binding Data.hits}">
+        <ListView ItemsSource="{Binding Data.hits}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -31,5 +36,13 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Назад" HorizontalOptions="Start"/>
+            <Button Text="Вперёд" HorizontalOptions="End" Grid.Column="1"/>
+        </Grid>
+    </Grid>
 </ContentPage>
