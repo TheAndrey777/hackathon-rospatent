@@ -47,15 +47,6 @@ class PatentSearchViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-    public string Applicant
-    {
-        get => _model.Applicant;
-        set
-        {
-            _model.Applicant = value;
-            OnPropertyChanged();
-        }
-    }
     public string ApplicationNumber
     {
         get => _model.ApplicationNumber;
@@ -94,8 +85,8 @@ class PatentSearchViewModel : INotifyPropertyChanged
                 {
                     _model.Sort = PatentSortEnum.Relevance;
                     _model.Page = 0;
-                    await App.Current.MainPage.DisplayAlert($"{(ViewModelsVault.SearchResult == null ? "пиздец" : "лепота")}", $"Запрос \"{Request}\"", "Пиздец");
-                    SearchResultModel res = null;
+                    SearchResultModel res = await HttpApiClient.Search(_model);
+                    await App.Current.MainPage.DisplayAlert($"{res.total}", $"Запрос \"{Request}\"", "Пиздец");
                     //var res = await HttpApiClient.Search();
                 });
             return _searchCommand;
@@ -115,7 +106,6 @@ class PatentSearchViewModel : INotifyPropertyChanged
                     DocumentNumber = "";
                     Author = "";
                     Patentee = "";
-                    Applicant = "";
                     ApplicationNumber = "";
                     PublicationDateFrom = new DateTime().AddYears(2000);
                     PublicationDateTo = DateTime.Today;

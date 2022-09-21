@@ -28,10 +28,6 @@
                         <Entry BackgroundColor="White" Text="{Binding Author, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
-                    <VerticalStackLayout Spacing="5" Grid.Column="0">
-                        <Label Text ="Заявитель"/>
-                        <Entry BackgroundColor="White" Text="{Binding Applicant, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
-                    </VerticalStackLayout>
                     <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
                     <VerticalStackLayout Spacing="5" Grid.Column="0">
                         <Label Text ="Патентообладатель"/>
