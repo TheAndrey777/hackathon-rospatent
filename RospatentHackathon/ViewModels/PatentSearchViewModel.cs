@@ -84,7 +84,8 @@ class PatentSearchViewModel : INotifyPropertyChanged
                 _searchCommand = new RelayCommand(async param =>
                 {
                     _model.Sort = PatentSortEnum.Relevance;
-                    _model.Page = 0;
+                    _model.Page = 1;
+                    await App.Current.MainPage.DisplayAlert($"Тело запроса", $"{_model}", "Пиздец");
                     SearchResultModel res = await HttpApiClient.Search(_model);
                     await App.Current.MainPage.DisplayAlert($"{res.total}", $"Запрос \"{Request}\"", "Пиздец");
                     //var res = await HttpApiClient.Search();

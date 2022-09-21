@@ -27,28 +27,28 @@ public class HttpApiClient
             {
                 ids = new Ids
                 {
-                    values = new List<string> { query.Patentee },
+                    values = query.DocumentNumber.Split(" ").ToList(),
                 },
-                authors = new Authors
-                {
-                    values = new List<string> { query.Author },
-                },
-                patent_holders = new PatentHolders
-                {
-                    values = new List<string> { query.Author },
-                },
-                date_published = new DatePublished
-                {
-                    range = new Rospatent.Range 
-                    { 
-                        gte = query.PublicationDateFromStr,
-                        lte = query.PublicationDateToStr,
-                    }
-                },
-                kind = new Kind
-                {
-                    values = new List<string> { query.ApplicationNumber }
-                }
+                //authors = new Authors
+                //{
+                //    values = new List<string> { query.Author },
+                //},
+                //patent_holders = new PatentHolders
+                //{
+                //    values = new List<string> { query.Patentee },
+                //},
+                //date_published = new DatePublished
+                //{
+                //    range = new Rospatent.Range
+                //    {
+                //        gte = query.PublicationDateFromStr,
+                //        lte = query.PublicationDateToStr,
+                //    }
+                //},
+                //kind = new Kind
+                //{
+                //    values = new List<string> { query.ApplicationNumber }
+                //}
             }
         };
 
@@ -79,14 +79,15 @@ public class HttpApiClient
 
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
         var response = await client.PostAsync(ApiUrl + "/search", httpContent);
+        await App.Current.MainPage.DisplayAlert("", jsonPayload, "OK");
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
             SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
             return deserializedResponse;
         }
+        await App.Current.MainPage.DisplayAlert("Статус код", response.StatusCode.ToString(), "OK");
         return null;
     }
 

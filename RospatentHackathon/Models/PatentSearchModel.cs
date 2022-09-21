@@ -15,11 +15,16 @@ public class PatentSearchModel
     public string ApplicationNumber { get; set; }
     public PatentSortEnum Sort { get; set; }
     public int DocumentsLimit { get; } = 5;
-    public int Page { get; set; }
+    public int Page { get; set; } = 1;
 
     public DateTime PublicationDateFrom { get; set; }
     public string PublicationDateFromStr => PublicationDateFrom.ToString("yyyyMMdd");
 
     public DateTime PublicationDateTo{ get; set; }
     public string PublicationDateToStr => PublicationDateTo.ToString("yyyyMMdd");
+
+    public override string ToString()
+    {
+        return $"Request:{Request}\n.DocumentNumber:{DocumentNumber}\n.Author:{Author}\n.Patentee:{Patentee}\n.ApplicationNumber:{ApplicationNumber}\n.PublicationDateFromStr:{PublicationDateFromStr}\n.PublicationDateToStr:{PublicationDateToStr}\n";
+    }
 }

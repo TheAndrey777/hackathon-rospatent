@@ -12,11 +12,11 @@ public class Query
 
 public class QueryFilter
 {
-    public Authors authors { get; set; }
-    public PatentHolders patent_holders { get; set; }
     public Ids ids { get; set; }
-    public DatePublished date_published { get; set; }
-    public Kind kind { get; set; }
+    //public Authors authors { get; set; }
+    //public PatentHolders patent_holders { get; set; }
+    //public DatePublished date_published { get; set; }
+    //public Kind kind { get; set; }
 }
 
 public class Kind
