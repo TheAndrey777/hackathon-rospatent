@@ -62,7 +62,6 @@
 
 	<ItemGroup>
 	  <Folder Include="API\" />
-	  <Folder Include="Models\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -85,6 +84,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Controls\TestControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DocumentViewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MyTabbedPage.xaml">
