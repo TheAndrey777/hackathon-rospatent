@@ -23,12 +23,12 @@ public class HttpApiClient
             qn = query.Request,
             limit = query.DocumentsLimit,
             offset = query.DocumentsLimit * (query.Page - 1),
-            filter = new QueryFilter
-            {
-                ids = new Ids
-                {
-                    values = query.DocumentNumber.Split(" ").ToList(),
-                },
+            //filter = new QueryFilter
+            //{
+            //    ids = new Ids
+            //    {
+            //        values = query.DocumentNumber.Split(" ").ToList(),
+            //    },
                 //authors = new Authors
                 //{
                 //    values = new List<string> { query.Author },
@@ -49,7 +49,7 @@ public class HttpApiClient
                 //{
                 //    values = new List<string> { query.ApplicationNumber }
                 //}
-            }
+            //}
         };
 
         switch (query.Sort)
@@ -80,14 +80,12 @@ public class HttpApiClient
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
         var response = await client.PostAsync(ApiUrl + "/search", httpContent);
-        await App.Current.MainPage.DisplayAlert("", jsonPayload, "OK");
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
             SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
             return deserializedResponse;
         }
-        await App.Current.MainPage.DisplayAlert("Статус код", response.StatusCode.ToString(), "OK");
         return null;
     }
 

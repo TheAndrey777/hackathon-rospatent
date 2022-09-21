@@ -10,20 +10,57 @@ namespace RospatentHackathon.ViewModels;
 public class SearchResultViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
-
-    public SearchResultModel Data { get; private set; } = new SearchResultModel();
-    public int Total => Data.total;
-
-    public void SetData(SearchResultModel res)
+    public SearchResultModel _data = new SearchResultModel();
+    public SearchResultModel Data
     {
-        Data = res;
-        Crutch.MyTab.GoToRead();
-        Update();
+        get => _data;
+        private set
+        {
+            _data = value;
+            OnPropertyChanged();
+        }
     }
 
-    private void Update()
+    public string _loadedInfo = "Выполните поисковый запрос";
+    public string LoadedInfo 
+    { 
+        get=> _loadedInfo;
+        private set
+        {
+            _loadedInfo = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    public string _searchType = "Выполните поисковый запрос";
+    public string SearchType
+    { 
+        get=> _searchType;
+        private set
+        {
+            _searchType = value;
+            OnPropertyChanged();
+        }
+    }
+
+    private PatentSearchModel _model;
+
+    public void SetSearchModelAndSearch(PatentSearchModel model, string searchInfo)
     {
-        OnPropertyChanged(nameof(Total));
+        _model = model;
+        SearchType = searchInfo;
+        Search();
+    }
+
+    private async void Search()
+    {
+        if(_model == null)
+            return;
+        Crutch.MyTab.GoToRead();
+        LoadedInfo = $"Загрузка..";
+        Data = new SearchResultModel();
+        Data = await HttpApiClient.Search(_model);
+        LoadedInfo = $"Showed {Data.Downloaded}/{Data.total}";
     }
 
     public SearchResultViewModel()

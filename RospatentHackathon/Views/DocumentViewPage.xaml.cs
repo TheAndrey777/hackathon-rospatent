@@ -10,7 +10,6 @@ public partial class DocumentViewPage : ContentPage
 	public DocumentViewPage()
 	{
 		InitializeComponent();
-		DownloadDoc();
     }
 
 	private async void DownloadDoc()

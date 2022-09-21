@@ -6,8 +6,8 @@ public class Query
     public int limit { get; set; }
     public int offset { get; set; }
     public string sort { get; set; }
-    public int include_facets { get; } = 1;
-    public QueryFilter filter { get; set; }
+    //public int include_facets { get; } = 0;
+    //public QueryFilter filter { get; set; }
 }
 
 public class QueryFilter

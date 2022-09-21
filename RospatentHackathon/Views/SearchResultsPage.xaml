@@ -11,14 +11,25 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-        </Grid>
-        <Label 
-            Text="{Binding Total, StringFormat='Total: {0:F0}'}"
+            <Label Grid.Column="0"
+            Text="{Binding LoadedInfo}"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding SearchType, StringFormat='Total: {0:F0}'}"
+            Margin="12,0,0,0"
+            HorizontalOptions="Start" />
+            <Label Grid.Column="1"
+            Text="{Binding SearchType}"
             VerticalOptions="Center" 
+            Margin="0,0,12,0"
             HorizontalOptions="End" />
+        </Grid>
+        <ListView ItemsSource="{Binding Data.hits}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding common.publication_date}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
 </ContentPage>
