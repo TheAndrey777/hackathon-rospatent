@@ -5,6 +5,31 @@ public class Query
     public string qn { get; set; }
     public int limit { get; set; }
     public int offset { get; set; }
+    public string sort { get; set; }
+    public int include_facets { get; set; }
+    public QueryFilter filter { get; set; }
+}
+
+public class QueryFilter
+{
+    public Authors authors { get; set; }
+    public PatentHolders patent_holders { get; set; }
+    public Ids ids { get; set; }
+}
+
+public class Authors
+{
+    public List<string> values { get; set; }
+}
+
+public class PatentHolders
+{
+    public List<string> values { get; set; }
+}
+
+public class Ids
+{
+    public List<string> values { get; set; }
 }
 
 public class SimilarSearchQuery

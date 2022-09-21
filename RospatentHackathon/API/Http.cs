@@ -1,4 +1,5 @@
 ﻿using Rospatent;
+using RospatentHackathon;
 using RospatentHackathon.Models;
 using System.Text;
 using System.Text.Json;
@@ -15,14 +16,40 @@ public class HttpApiClient
         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "7dba7140a9bd418c82c7976ee248f5a7");
     }
 
-    public static async Task<SearchResultModel> Search(String query, int limit, int page)
+    public static async Task<SearchResultModel> Search(PatentSearchModel query)
     {
         var payload = new Query
         {
-            qn = query,
-            limit = limit,
-            offset = limit * (page-1),
+            qn = query.Request,
+            limit = query.DocumentsLimit,
+            offset = query.DocumentsLimit * (query.Page - 1),
         };
+
+        switch (query.Sort)
+        {
+            case PatentSortEnum.Relevance:
+                payload.sort = "relevance";
+                break;
+
+            case PatentSortEnum.PublicationDateAsc:
+                payload.sort = "publication date:asc";
+                break;
+
+            case PatentSortEnum.PublicationDateDesc:
+                payload.sort = "publication date:desc";
+                break;
+
+            case PatentSortEnum.FillingDateAsc:
+                payload.sort = "filing date:asc";
+                break;
+
+            case PatentSortEnum.FillingDateDesc:
+                payload.sort = "filing date:desc";
+                break;
+
+            default: break;
+        }
+
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
