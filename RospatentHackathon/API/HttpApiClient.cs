@@ -23,14 +23,34 @@ public class HttpApiClient
             qn = query.Request,
             limit = query.DocumentsLimit,
             offset = query.DocumentsLimit * (query.Page - 1),
-            filter = new QueryFilter()
+            filter = new QueryFilter
+            {
+                ids = new Ids
+                {
+                    values = query.DocumentNumber.Split(" ").ToList(),
+                },
+                //authors = new Authors
+                //{
+                //    values = new List<string> { query.Author },
+                //},
+                //patent_holders = new PatentHolders
+                //{
+                //    values = new List<string> { query.Patentee },
+                //},
+                //date_published = new DatePublished
+                //{
+                //    range = new Rospatent.Range
+                //    {
+                //        gte = query.PublicationDateFromStr,
+                //        lte = query.PublicationDateToStr,
+                //    }
+                //},
+                //kind = new Kind
+                //{
+                //    values = new List<string> { query.ApplicationNumber }
+                //}
+            }
         };
-
-        if (query.DocumentNumber != "") payload.filter.ids = new Ids { values = query.DocumentNumber.Split(" ").ToList() };
-        if (query.Author != "") payload.filter.authors = new Authors { values = query.Author.Split(",").ToList() };
-        if (query.Patentee != "") payload.filter.patent_holders = new PatentHolders { values = query.Patentee.Split(",").ToList() };
-        if (query.PublicationDateFromStr != "" || query.PublicationDateToStr != "") payload.filter.date_published = new DatePublished { range = new Rospatent.Range { gte = query.PublicationDateFromStr, lte = query.PublicationDateToStr }};
-        if (query.ApplicationNumber != "") payload.filter.kind = new Kind { values = query.ApplicationNumber.Split(" ").ToList() };
 
         switch (query.Sort)
         {
@@ -39,19 +59,19 @@ public class HttpApiClient
                 break;
 
             case PatentSortEnum.PublicationDateAsc:
-                payload.sort = "publication_date:asc";
+                payload.sort = "publication date:asc";
                 break;
 
             case PatentSortEnum.PublicationDateDesc:
-                payload.sort = "publication_date:desc";
+                payload.sort = "publication date:desc";
                 break;
 
             case PatentSortEnum.FillingDateAsc:
-                payload.sort = "filing_date:asc";
+                payload.sort = "filing date:asc";
                 break;
 
             case PatentSortEnum.FillingDateDesc:
-                payload.sort = "filing_date:desc";
+                payload.sort = "filing date:desc";
                 break;
 
             default: break;
@@ -60,12 +80,14 @@ public class HttpApiClient
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
         var response = await client.PostAsync(ApiUrl + "/search", httpContent);
+        await App.Current.MainPage.DisplayAlert("", jsonPayload, "OK");
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
             SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
             return deserializedResponse;
         }
+        await App.Current.MainPage.DisplayAlert("Статус код", response.StatusCode.ToString(), "OK");
         return null;
     }
 

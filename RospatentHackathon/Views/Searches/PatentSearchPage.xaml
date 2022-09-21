@@ -4,11 +4,10 @@
              xmlns:models="clr-namespace:RospatentHackathon.ViewModels"
              x:Class="RospatentHackathon.Views.PatentSearchPage"
              Title="PatentSearch"
-             NavigationPage.HasNavigationBar ="False"
-             NavigationPage.HasBackButton="False">
+             NavigationPage.HasNavigationBar ="False">
     <ScrollView Padding="0">
         <VerticalStackLayout>
-            <Button Text="Назад" Clicked="PS" FontSize="12" CornerRadius="5" BorderWidth="1" HorizontalOptions="Start"/>
+            <Button Text="Назад" Clicked="PS" FontSize="12" CornerRadius="0" BorderWidth="1"/>
             <VerticalStackLayout Spacing="10" Padding="10">
                 <HorizontalStackLayout Spacing="20" Padding="0">
                     <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
