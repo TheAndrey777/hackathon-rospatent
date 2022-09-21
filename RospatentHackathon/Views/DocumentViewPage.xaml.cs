@@ -11,10 +11,12 @@ public partial class DocumentViewPage : ContentPage
 	{
 		InitializeComponent();
 		DownloadDoc();
+		Console.WriteLine(Document);
     }
 
 	private async void DownloadDoc()
 	{
         Document = await HttpApiClient.GetDocument("RU2358138C1_20090610");
+        Console.WriteLine(Document);
     }
 }
