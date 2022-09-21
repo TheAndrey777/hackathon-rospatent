@@ -15,14 +15,6 @@ public class SimilarSearchQuery
     public int count { get; set; }
 }
 
-public class SearchResponse
-{
-    public int total { get; set; }
-    public int available { get; set; }
-    public List<Hit> hits { get; set; }
-    public Timings timings { get; set; }
-}
-
 public class SimilarSearchResponse
 {
     public int total { get; set; }

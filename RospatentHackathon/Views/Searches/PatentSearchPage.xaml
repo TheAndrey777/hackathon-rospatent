@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:RospatentHackathon.ViewModels"
              x:Class="RospatentHackathon.Views.PatentSearchPage"
-             Title="PatentSearch"
-             BackgroundColor="Yellow">
+             Title="PatentSearch">
     <ContentPage.BindingContext>
         <models:PatentSearchViewModel/>
     </ContentPage.BindingContext>

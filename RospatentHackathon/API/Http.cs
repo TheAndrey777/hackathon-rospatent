@@ -1,4 +1,5 @@
 ﻿using Rospatent;
+using RospatentHackathon.Models;
 using System.Text;
 using System.Text.Json;
 
@@ -14,13 +15,13 @@ public class HttpApiClient
         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "7dba7140a9bd418c82c7976ee248f5a7");
     }
 
-    public static async Task<SearchResponse> Search(String query, int limit, int page)
+    public static async Task<PatentSearchResultModel> Search(String query, int limit, int page)
     {
         var payload = new Query
         {
             qn = query,
             limit = limit,
-            offset = limit * page,
+            offset = limit * (page-1),
         };
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
@@ -29,7 +30,7 @@ public class HttpApiClient
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
-            SearchResponse deserializedResponse = JsonSerializer.Deserialize<SearchResponse>(responseContent);
+            PatentSearchResultModel deserializedResponse = JsonSerializer.Deserialize<PatentSearchResultModel>(responseContent);
             return deserializedResponse;
         }
         return null;

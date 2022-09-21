@@ -1,4 +1,5 @@
-﻿using RospatentHackathon.Models;
+﻿using RospatentHackathon.Commands;
+using RospatentHackathon.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -73,9 +74,19 @@ class PatentSearchViewModel : INotifyPropertyChanged
         }
     }
 
-    public PatentSearchViewModel()
+    public RelayCommand _searchCommand;
+    public RelayCommand SearchCommand
     {
-        _model.Sort = PatentSortEnum.Relevance;
+        get
+        {
+            if (_searchCommand == null)
+                _searchCommand = new RelayCommand(param =>
+                {
+                    _model.Sort = PatentSortEnum.Relevance;
+                    _model.Page = 0;
+                });
+            return _searchCommand;
+        }
     }
 
     public void OnPropertyChanged([CallerMemberName] string name = "") =>

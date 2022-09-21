@@ -14,6 +14,8 @@ internal class PatentSearchModel
     public string Patentee { get; set; }
     public string Applicant { get; set; }
     public PatentSortEnum Sort { get; set; }
+    public int DocumentsLimit { get; } = 5;
+    public int Page { get; set; }
 
     public DateTime PublicationDateFrom { get; set; }
     public string PublicationDateFromStr => PublicationDateFrom.ToString("yyyyMMdd");
