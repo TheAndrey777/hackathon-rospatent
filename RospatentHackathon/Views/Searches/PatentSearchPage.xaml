@@ -29,29 +29,26 @@
 
                         <VerticalStackLayout Spacing="5" Grid.Column="0">
                             <Label Text ="Автор"/>
-                            <Entry  ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                            <Entry  ClearButtonVisibility="WhileEditing" Text="{Binding Author}" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
                         </VerticalStackLayout>
                         <VerticalStackLayout Spacing="20" Grid.Column="0"></VerticalStackLayout>
-                        <VerticalStackLayout Spacing="5" Grid.Column="0">
-                            <Label Text ="Заявитель"/>
-                            <Entry  ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Spacing="20" Grid.Column="0"></VerticalStackLayout>
+                        
+                        
                         <VerticalStackLayout Spacing="5" Grid.Column="0">
                             <Label Text ="Патентообладатель"/>
-                            <Entry ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                            <Entry ClearButtonVisibility="WhileEditing" Text="{Binding Patentee}" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
                         </VerticalStackLayout>
 
                     </VerticalStackLayout>
                     <VerticalStackLayout Padding ="10" Spacing="10" Grid.Column="1">
                         <Label Text="Дата публикации от:"/>
                         <Border>
-                            <DatePicker HorizontalOptions="Center"/>
+                            <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateFrom}"/>
                         </Border>
                         <VerticalStackLayout Spacing="20"></VerticalStackLayout>
                         <Label Text="Дата публикации до:"/>
                         <Border>
-                            <DatePicker HorizontalOptions="Center"/>
+                            <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateTo}"/>
                         </Border>
                         <Button Text ="Очистить" FontSize="16" BorderWidth="1"></Button>
                     </VerticalStackLayout>
