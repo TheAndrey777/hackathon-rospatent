@@ -60,14 +60,12 @@ public class HttpApiClient
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
         var response = await client.PostAsync(ApiUrl + "/search", httpContent);
-        await App.Current.MainPage.DisplayAlert("", jsonPayload, "OK");
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
             SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
             return deserializedResponse;
         }
-        await App.Current.MainPage.DisplayAlert("Статус код", response.StatusCode.ToString(), "OK");
         return null;
     }
 

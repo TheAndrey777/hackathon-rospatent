@@ -2,21 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.SearchResultsPage"
-             Title="SearchResultsPage">
+             Title="SearchResultsPage"
+             NavigationPage.HasNavigationBar ="False"
+             NavigationPage.HasBackButton="False">
     <VerticalStackLayout>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-        </Grid>
-        <Label 
-            Text="{Binding Total, StringFormat='Total: {0:F0}'}"
+            <Label Grid.Column="0"
+            Text="{Binding LoadedInfo}"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding SearchType, StringFormat='Total: {0:F0}'}"
+            Margin="12,0,0,0"
+            HorizontalOptions="Start" />
+            <Label Grid.Column="1"
+            Text="{Binding SearchType}"
             VerticalOptions="Center" 
+            Margin="0,0,12,0"
             HorizontalOptions="End" />
+        </Grid>
+        <ListView ItemsSource="{Binding Data.hits}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding common.publication_date}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
 </ContentPage>
