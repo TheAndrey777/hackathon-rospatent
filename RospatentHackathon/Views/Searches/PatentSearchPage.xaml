@@ -5,54 +5,58 @@
              x:Class="RospatentHackathon.Views.PatentSearchPage"
              Title="PatentSearch">
     <ScrollView Padding="0">
-    <VerticalStackLayout Spacing="30" Padding="10">
-        <HorizontalStackLayout Spacing="20" Padding="0">
-            <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
-            <Entry FontFamily="RobotoFlex" BackgroundColor="White" HeightRequest="50" MaximumWidthRequest="400" MinimumWidthRequest="150" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
-            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1" Command="{Binding SearchCommand}"/>
+        <VerticalStackLayout Spacing="30" Padding="10">
+            <HorizontalStackLayout Spacing="20" Padding="0">
+                <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
+                
+            <Entry FontFamily="RobotoFlex" BackgroundColor="White" HeightRequest="50" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
+                    <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
             </HorizontalStackLayout>
-        <Grid Padding="0" ColumnSpacing="10" ColumnDefinitions="Auto, *">
-            <VerticalStackLayout Grid.Column="0">
-                <Label Text="Номер документа" FontSize="22" HorizontalOptions="Start"/>
-                <Entry BackgroundColor="White" HeightRequest="30" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
-            </VerticalStackLayout>
-            <VerticalStackLayout Grid.Column="1">
-                <Label Text="Номер заявки" FontSize="22" HorizontalOptions="Start"/>
-                <Entry BackgroundColor="White" HeightRequest="30" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
-            </VerticalStackLayout>
-        </Grid>
-            <Grid ColumnDefinitions ="Auto, *" ColumnSpacing="10" RowSpacing="10">
-                <VerticalStackLayout>
-        <VerticalStackLayout Spacing="5" Grid.Column="0">
-            <Label Text ="Автор"/>
-            <Entry BackgroundColor="White" HeightRequest="40" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
-        </VerticalStackLayout>
-                <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
-                <VerticalStackLayout Spacing="5" Grid.Column="0">
-                <Label Text ="Заявитель"/>
-                <Entry BackgroundColor="White" HeightRequest="40" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
-            </VerticalStackLayout>
-                <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
-                <VerticalStackLayout Spacing="5" Grid.Column="0">
-                <Label Text ="Патентообладатель"/>
-                <Entry BackgroundColor="White" HeightRequest="40" MaximumWidthRequest="150" MinimumWidthRequest="100" HorizontalOptions="Start"/>
-            </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="10" Grid.Column="1">
-                        <Label Text="Дата публикации от:"/>
-                        <DatePicker/>
-                        <VerticalStackLayout Spacing="20"></VerticalStackLayout>
-                        <Label Text="Дата публикации до:"/>
-                        <Border>
-                            <DatePicker/>
-                        </Border>
-                    </VerticalStackLayout>
+            
+          
+            <Grid Padding="0" ColumnSpacing="10" ColumnDefinitions="Auto, *">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Номер документа" FontSize="20" HorizontalOptions="Start"/>
+                    <Entry BackgroundColor="White" HeightRequest="30" WidthRequest="170" HorizontalOptions="Start"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="Номер заявки" FontSize="20" HorizontalOptions="Start"/>
+                    <Entry BackgroundColor="White" HeightRequest="30" WidthRequest="170" HorizontalOptions="Start"/>
                 </VerticalStackLayout>
             </Grid>
-            <Grid ColumnDefinitions="Auto, *">
-        
-        
-        <!--<Image Source="Resources/Images/cubes.png" Aspect="AspectFit"/>-->
-    </Grid>
-    </VerticalStackLayout>
+            <Grid ColumnDefinitions ="*, *" ColumnSpacing="10" RowSpacing="10">
+                <VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5" Grid.Column="0">
+                        <Label Text ="Автор"/>
+                        <Entry BackgroundColor="White" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5" Grid.Column="0">
+                        <Label Text ="Заявитель"/>
+                        <Entry BackgroundColor="White" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="10" Grid.Column="0"></VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5" Grid.Column="0">
+                        <Label Text ="Патентообладатель"/>
+                        <Entry BackgroundColor="White" ClearButtonVisibility="WhileEditing" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+                <VerticalStackLayout Padding ="10" Spacing="10" Grid.Column="1">
+                    <Label Text="Дата публикации от:"/>
+                    <Border>
+                        <DatePicker/>
+                    </Border>
+                    <VerticalStackLayout Spacing="20"></VerticalStackLayout>
+                    <Label Text="Дата публикации до:"/>
+                    <Border>
+                        <DatePicker/>
+                    </Border>
+                    <Button Text ="Очистить" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
+                </VerticalStackLayout>
+            </Grid>
+            <Button Text="Поиск" FontSize="16" BorderColor="Blue" BorderWidth="1"></Button>
+        </VerticalStackLayout>
+
     </ScrollView>
 </ContentPage>
