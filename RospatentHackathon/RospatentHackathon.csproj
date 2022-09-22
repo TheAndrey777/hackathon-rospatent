@@ -59,6 +59,9 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\21002.ttf" />
 	  <None Remove="Resources\Fonts\21003.ttf" />
+	  <None Remove="Resources\Images\arrow_left_solid.svg" />
+	  <None Remove="Resources\Images\arrow_right_solid.svg" />
+	  <None Remove="Resources\Images\LArrow.png" />
 	  <None Remove="Resources\Images\search.svg" />
 	</ItemGroup>
 

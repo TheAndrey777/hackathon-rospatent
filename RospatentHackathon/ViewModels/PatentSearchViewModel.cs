@@ -47,15 +47,6 @@ class PatentSearchViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-    public string ApplicationNumber
-    {
-        get => _model.ApplicationNumber;
-        set
-        {
-            _model.ApplicationNumber = value;
-            OnPropertyChanged();
-        }
-    }
     public int SortIndex
     {
         get => (int)_model.Sort;
@@ -112,7 +103,6 @@ class PatentSearchViewModel : INotifyPropertyChanged
                     DocumentNumber = "";
                     Author = "";
                     Patentee = "";
-                    ApplicationNumber = "";
                     PublicationDateFrom = new DateTime().AddYears(2000);
                     PublicationDateTo = DateTime.Today;
                     SortIndex = 0;

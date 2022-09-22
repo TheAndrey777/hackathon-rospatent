@@ -30,7 +30,6 @@ public class HttpApiClient
         if (query.Author != "") payload.filter.authors = new Authors { values = query.Author.Split(",").ToList() };
         if (query.Patentee != "") payload.filter.patent_holders = new PatentHolders { values = query.Patentee.Split(",").ToList() };
         if (query.PublicationDateFromStr != "" || query.PublicationDateToStr != "") payload.filter.date_published = new DatePublished { range = new Rospatent.Range { gte = query.PublicationDateFromStr, lte = query.PublicationDateToStr }};
-        if (query.ApplicationNumber != "") payload.filter.kind = new Kind { values = query.ApplicationNumber.Split(" ").ToList() };
 
         switch (query.Sort)
         {

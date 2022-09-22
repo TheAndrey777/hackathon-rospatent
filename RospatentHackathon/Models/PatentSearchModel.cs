@@ -12,7 +12,6 @@ public class PatentSearchModel
     public string DocumentNumber { get; set; }
     public string Author { get; set; }
     public string Patentee { get; set; }
-    public string ApplicationNumber { get; set; }
     public PatentSortEnum Sort { get; set; }
     public int DocumentsLimit { get; } = 5;
     public int Page { get; set; } = 1;
@@ -26,7 +25,7 @@ public class PatentSearchModel
     public override string ToString()
     {
         return $"Request:{Request}\nDocumentNumber:{DocumentNumber}\n" +
-            $"Author:{Author}\n.Patentee:{Patentee}\nApplicationNumber:{ApplicationNumber}\n" +
+            $"Author:{Author}\n.Patentee:{Patentee}\n" +
             $"PublicationDateFromStr:{PublicationDateFromStr}\nPublicationDateToStr:{PublicationDateToStr}\n" +
             $"Sort:{Sort}\n";
     }
