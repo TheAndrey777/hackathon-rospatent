@@ -102,17 +102,6 @@ public class Application
     public string filing_date { get; set; }
 }
 
-public class Biblio
-{
-    public LangBiblio ru { get; set; }
-    public LangBiblio en { get; set; }
-    public LangBiblio uk { get; set; }
-
-    public override string ToString()
-    {
-        return $"";
-    }
-}
 
 public class CitationsParsed
 {
@@ -136,10 +125,10 @@ public class Document
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public Biblio biblio { get; set; }
-    public Abstract @abstract { get; set; }
-    public Claims claims { get; set; }
-    public Description description { get; set; }
+    public Dictionary<string, LangBiblio> biblio { get; set; }
+    public Dictionary<string, string> @abstract { get; set; }
+    public Dictionary<string, string> claims { get; set; }
+    public Dictionary<string, string> description { get; set; }
     public List<Drawing> drawings { get; set; }
     public string id { get; set; } 
     public string index { get; set; }
@@ -165,7 +154,7 @@ public class Datum
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public Biblio biblio { get; set; }
+    public JsonElement biblio { get; set; }
     public List<Drawing> drawings { get; set; }
     public string id { get; set; }
     public string index { get; set; }
@@ -217,7 +206,8 @@ public class Hit
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public Biblio biblio { get; set; }
+    public Dictionary<string, LangBiblio> biblio { get; set; }
+    public string lang => string.Join(", ", biblio.Keys);
     public List<Drawing> drawings { get; set; }
     public string id { get; set; }
     public string index { get; set; }
@@ -290,17 +280,4 @@ public class Source
     public string from { get; set; }
 }
 
-public class Description
-{
-    public string ru { get; set; }
-}
 
-public class Abstract
-{
-    public string ru { get; set; }
-}
-
-public class Claims
-{
-    public string ru { get; set; }
-}
