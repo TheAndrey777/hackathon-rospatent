@@ -65,7 +65,11 @@ public class Ids
 public class SimilarSearchQuery
 {
     public string type_search { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string pat_id { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string pat_text { get; set; }
     public int count { get; set; }
 }
