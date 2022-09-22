@@ -89,6 +89,11 @@ class SimilarSearchViewModel : INotifyPropertyChanged
                 {
                     await App.Current.MainPage.DisplayAlert("Запрос", _similarSearchModel.ToString(), "ok");
                     Crutch.SearchResult.SetSimilarSearchModelAndSearch(_similarSearchModel, "Поиск хожих документов");
+                }, (param)=>
+                {
+                    if (IdSearchEnable)
+                        return true;
+                    return RequestText.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length >= 50;
                 });
             return _searchCommand;
         }
