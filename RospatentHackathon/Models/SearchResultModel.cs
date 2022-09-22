@@ -1,4 +1,5 @@
-﻿using Rospatent;
+﻿using Android.Hardware.Camera2;
+using Rospatent;
 
 namespace RospatentHackathon.Models;
 

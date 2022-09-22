@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.DocumentViewPage"
              Title="DocumentViewPage">
-
-    <WebView BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
-            <WebView.Source>
-                <HtmlWebViewSource x:Name="HTMLPage" Html="" />
-            </WebView.Source>
+    <WebView x:Name="Web" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
+        <WebView.Source>
+            <HtmlWebViewSource x:Name="HTMLPage" Html="" />
+        </WebView.Source>
     </WebView>
 </ContentPage>

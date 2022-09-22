@@ -6,21 +6,27 @@
              NavigationPage.HasNavigationBar ="False"
              NavigationPage.HasBackButton="False">
     <ScrollView>
-        <Grid RowSpacing="12" ColumnSpacing="12" Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Button Clicked="Button_Clicked"
-                    Text="Поиск"
-                    Grid.Column="0"/>
-            <Button Clicked="Button_Clicked2" Grid.Column="1"/>
-            <Button Clicked="Button_Clicked3" Grid.Row="1"/>
-        </Grid>
+        <VerticalStackLayout Padding="30" Spacing="50">
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                <Button Clicked="Button_Clicked" FontAttributes="Bold" FontSize="23" Text="Поиск" Grid.Column="0" HeightRequest="140"></Button>
+                <Button Clicked="Button_Clicked2" FontAttributes="Bold" FontSize="23" Text="Поиск похожих" LineBreakMode="WordWrap" Grid.Column="1" HeightRequest="140"></Button>
+            </Grid>
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Добро пожаловать в Программу для Поиска Патентных Документов" LineBreakMode="WordWrap" FontAttributes="Bold" FontSize="20"></Label>
+                <Label Text="Наша программа позволяет совершать поиск по патентным документам базы данных Роспатент, а также находить похожие." FontAttributes="Italic" FontSize="18" LineBreakMode="WordWrap"></Label>
+                <Label></Label>
+                <Label ></Label>
+                <Label></Label>
+                <Label ></Label>
+                <Label></Label>
+
+                <Label Text="Сделано командой Студики+" FontSize="18" FontAttributes="Italic"></Label>
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="30">
+                    <Image Source="emblem.png"  Grid.Column="0"></Image>
+                    <Image Source="sfu.svg" Grid.Column="1"></Image>
+                </Grid>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
