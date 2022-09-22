@@ -16,12 +16,11 @@ public partial class DocumentViewPage : ContentPage
     {
         InitializeComponent();
         Crutch.DocumentView = this;
-        DownloadDoc("RU2358138C1_20090610", "ru");
     }
 
     public async void DownloadDoc(string id, string preferLang)
     {
-        Console.WriteLine($"Документ: {id}");
+        Console.WriteLine($"Документ: {id}, язык: {preferLang}");
         Document = await HttpApiClient.GetDocument(id);
         if (Document == null) return;
         string html = @"<HTML><BODY>";
@@ -75,7 +74,7 @@ public partial class DocumentViewPage : ContentPage
 
     private LangBiblio LangForTitle(string preferLang)
     {
-        if (biblio[preferLang].title != null)
+        if (biblio.ContainsKey(preferLang) && biblio[preferLang].title != null)
             return biblio[preferLang];
         foreach (var value in biblio.Values)
             if (value.title != null)
@@ -85,7 +84,7 @@ public partial class DocumentViewPage : ContentPage
     
     private LangBiblio LangForApplicant(string preferLang)
     {
-        if (biblio[preferLang].applicant != null)
+        if (biblio.ContainsKey(preferLang) && biblio[preferLang].applicant != null)
             return biblio[preferLang];
         foreach (var value in biblio.Values)
             if (value.applicant != null)
@@ -95,7 +94,7 @@ public partial class DocumentViewPage : ContentPage
     
     private LangBiblio LangForInventor(string preferLang)
     {
-        if (biblio[preferLang].inventor != null)
+        if (biblio.ContainsKey(preferLang) && biblio[preferLang].inventor != null)
             return biblio[preferLang];
         foreach (var value in biblio.Values)
             if (value.inventor != null)
