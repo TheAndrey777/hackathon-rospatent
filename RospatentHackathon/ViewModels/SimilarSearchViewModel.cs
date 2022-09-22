@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RospatentHackathon.Commands;
+using RospatentHackathon.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace RospatentHackathon.ViewModels;
 class SimilarSearchViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
+    private SimilarSearchModel _similarSearchModel = new SimilarSearchModel();
 
     private bool _idSearch = true;
     public bool TextSearchEnable
@@ -41,19 +44,63 @@ class SimilarSearchViewModel : INotifyPropertyChanged
             _searchTypeIndex = value;
             IdSearchEnable = value == 0;
             TextSearchEnable = value == 1;
+            _similarSearchModel.Type = _idSearch ? SearchTypeEnum.Id : SearchTypeEnum.Text;
             OnPropertyChanged();
         }
     }
 
-    //public int TypeIndex
-    //{
-    //    get => (int)_model.Sort;
-    //    set
-    //    {
-    //        _model.Sort = (PatentSortEnum)value;
-    //        OnPropertyChanged();
-    //    }
-    //}
+    public string RequestText
+    {
+        get => _similarSearchModel.RequestText;
+        set
+        {
+            _similarSearchModel.RequestText = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    public string RequestID
+    {
+        get => _similarSearchModel.RequestID;
+        set
+        {
+            _similarSearchModel.RequestID = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    public int Count
+    {
+        get => _similarSearchModel.Count;
+        set
+        {
+            _similarSearchModel.Count = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public RelayCommand _searchCommand;
+    public RelayCommand SearchCommand
+    {
+        get
+        {
+            if (_searchCommand == null)
+                _searchCommand = new RelayCommand(async param =>
+                {
+                    await App.Current.MainPage.DisplayAlert("Запрос", _similarSearchModel.ToString(), "ok");
+                    Crutch.SearchResult.SetSimilarSearchModelAndSearch(_similarSearchModel, "Поиск хожих документов");
+                });
+            return _searchCommand;
+        }
+    }
+
+    public SimilarSearchViewModel()
+    {
+        RequestText = "Text";
+        RequestID = "ID";
+        SearchTypeIndex = 0;
+        Count = 30;
+    }
 
     public void OnPropertyChanged([CallerMemberName] string name = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

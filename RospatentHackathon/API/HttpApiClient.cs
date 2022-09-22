@@ -78,12 +78,12 @@ public class HttpApiClient
         {
             case SearchTypeEnum.Text:
                 payload.type_search = "text_search";
-                payload.pat_text = query.Request;
+                payload.pat_text = query.RequestText;
                 break;
 
             case SearchTypeEnum.Id:
                 payload.type_search = "id_search";
-                payload.pat_id = query.Request;
+                payload.pat_id = query.RequestID;
                 break;
 
             default: break;
@@ -96,9 +96,18 @@ public class HttpApiClient
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
-            SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
-            return deserializedResponse;
+            SimilarSearchResultModel deserializedResponse = JsonSerializer.Deserialize<SimilarSearchResultModel>(responseContent);
+           
+            SearchResultModel resp = new SearchResultModel();
+            resp.total = deserializedResponse.total;
+            resp.hits = new List<Hit>();
+            foreach (var d in deserializedResponse.data)
+                resp.hits.Add((Hit)d);
+            return resp;
         }
+        Console.WriteLine($"Status: {response.StatusCode}");
+        Console.WriteLine($"JSON: {jsonPayload}");
+        Console.ReadKey();
         return null;
     }
 

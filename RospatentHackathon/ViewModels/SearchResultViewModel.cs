@@ -44,27 +44,49 @@ public class SearchResultViewModel : INotifyPropertyChanged
         }
     }
 
-    private PatentSearchModel _model;
+    private PatentSearchModel _patentModel;
+    private SimilarSearchModel _similarModel;
     private bool _loading = false;
 
     public void SetSearchModelAndSearch(PatentSearchModel model, string searchInfo)
     {
-        _model = model;
+        _patentModel = model;
         SearchType = searchInfo;
-        Search();
+        SearchPatent();
+    }
+    
+    public void SetSimilarSearchModelAndSearch(SimilarSearchModel model, string searchInfo)
+    {
+        _similarModel = model;
+        SearchType = searchInfo;
+        SearchSimilar();
     }
 
-    private async void Search()
+    private async void SearchPatent()
     {
-        if (_model == null)
+        if (_patentModel == null)
             return;
         _loading = true;
         Crutch.MyTab.GoToList();
         LoadedInfo = $"Загрузка..";
         Data = new SearchResultModel();
-        Data = await HttpApiClient.Search(_model);
-        LoadedInfo = $"Showed {(_model.Page - 1) * _model.DocumentsLimit + 1}-{(_model.Page - 1) * _model.DocumentsLimit + Data.Downloaded}" +
+        Data = await HttpApiClient.Search(_patentModel);
+        LoadedInfo = $"Показано {(_patentModel.Page - 1) * _patentModel.DocumentsLimit + 1}-{(_patentModel.Page - 1) * _patentModel.DocumentsLimit + Data.Downloaded}" +
                     $" из {Data.total}";
+        _loading = false;
+        UpdateButtons();
+    }
+    
+    private async void SearchSimilar()
+    {
+        if (_similarModel == null)
+            return;
+        _loading = true;
+        Crutch.MyTab.GoToList();
+        LoadedInfo = $"Загрузка..";
+        Data = new SearchResultModel();
+        Data = await HttpApiClient.SimilarSearch(_similarModel);
+        LoadedInfo = $"Показано {_similarModel.Count}";
         _loading = false;
         UpdateButtons();
     }
@@ -77,10 +99,10 @@ public class SearchResultViewModel : INotifyPropertyChanged
             if (_prevPageCommand == null)
                 _prevPageCommand = new RelayCommand(param =>
                 {
-                    _model.Page--;
-                    Search();
+                    _patentModel.Page--;
+                    SearchPatent();
                     UpdateButtons();
-                }, (param) => _model != null && _model.Page > 1 && !_loading);
+                }, (param) => _patentModel != null && _patentModel.Page > 1 && !_loading);
             return _prevPageCommand;
         }
     }
@@ -93,11 +115,11 @@ public class SearchResultViewModel : INotifyPropertyChanged
             if (_nextPageCommand == null)
                 _nextPageCommand = new RelayCommand(param =>
                 {
-                    _model.Page++;
-                    Console.WriteLine($"modelPage:{_model.Page}");
-                    Search();
+                    _patentModel.Page++;
+                    Console.WriteLine($"modelPage:{_patentModel.Page}");
+                    SearchPatent();
                     UpdateButtons();
-                }, (param) => _model != null && Data != null && ((_model.Page) * _model.DocumentsLimit <= Data.total) && !_loading);
+                }, (param) => _patentModel != null && Data != null && ((_patentModel.Page) * _patentModel.DocumentsLimit <= Data.total) && !_loading);
             return _nextPageCommand;
         }
     }

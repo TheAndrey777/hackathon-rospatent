@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics.Metrics;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace Rospatent;
 
@@ -154,7 +155,7 @@ public class Datum
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public JsonElement biblio { get; set; }
+    public Dictionary<string, LangBiblio> biblio { get; set; }
     public List<Drawing> drawings { get; set; }
     public string id { get; set; }
     public string index { get; set; }
@@ -215,6 +216,16 @@ public class Hit
     public double similarity { get; set; }
     public double similarity_norm { get; set; }
     public Snippet snippet { get; set; }
+
+    public static explicit operator Hit(Datum datum)
+    {
+        var hit = new Hit();
+        hit.common = datum.common;
+        hit.id = datum.id;
+        hit.biblio = datum.biblio;
+        hit.snippet = datum.snippet;
+        return hit;
+    }
 }
 
 public class Inventor
