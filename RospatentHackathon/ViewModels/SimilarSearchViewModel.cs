@@ -85,9 +85,8 @@ class SimilarSearchViewModel : INotifyPropertyChanged
         get
         {
             if (_searchCommand == null)
-                _searchCommand = new RelayCommand(async param =>
+                _searchCommand = new RelayCommand(param =>
                 {
-                    await App.Current.MainPage.DisplayAlert("Запрос", _similarSearchModel.ToString(), "ok");
                     Crutch.SearchResult.SetSimilarSearchModelAndSearch(_similarSearchModel, "Поиск хожих документов");
                 }, (param)=>
                 {
