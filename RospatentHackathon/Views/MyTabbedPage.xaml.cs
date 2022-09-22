@@ -10,8 +10,13 @@ public partial class MyTabbedPage : TabbedPage
 		Crutch.MyTab = this;
 	}
 
-	public void GoToRead()
+	public void GoToList()
 	{
 		this.CurrentPage = Children[1];
+	}
+	
+	public void GoToRead()
+	{
+		this.CurrentPage = Children[2];
 	}
 }

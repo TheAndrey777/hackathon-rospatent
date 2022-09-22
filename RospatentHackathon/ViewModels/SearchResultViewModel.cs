@@ -59,7 +59,7 @@ public class SearchResultViewModel : INotifyPropertyChanged
         if(_model == null)
             return;
         _loading = true;
-        Crutch.MyTab.GoToRead();
+        Crutch.MyTab.GoToList();
         LoadedInfo = $"Загрузка..";
         Data = new SearchResultModel();
         Data = await HttpApiClient.Search(_model);

@@ -69,23 +69,35 @@ public class HttpApiClient
         return null;
     }
 
-    public static async Task<SimilarSearchResponse> SimilarSearch(String type, string query, int count)
+    public static async Task<SearchResultModel> SimilarSearch(SimilarSearchModel query)
     {
         var payload = new SimilarSearchQuery
         {
-            type_search = type,
-            count = count,
+            count = query.Count,
         };
-        if (type == "id_search") payload.pat_id = query; else payload.pat_text = query;
+        switch (query.Type)
+        {
+            case SearchTypeEnum.Text:
+                payload.type_search = "text_search";
+                payload.pat_text = query.Request;
+                break;
+
+            case SearchTypeEnum.Id:
+                payload.type_search = "id_search";
+                payload.pat_id = query.Request;
+                break;
+
+            default: break;
+        }
 
         var jsonPayload = JsonSerializer.Serialize(payload);
         var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
+        
         var response = await client.PostAsync(ApiUrl + "/similar_search'", httpContent);
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
-            SimilarSearchResponse deserializedResponse = JsonSerializer.Deserialize<SimilarSearchResponse>(responseContent);
+            SearchResultModel deserializedResponse = JsonSerializer.Deserialize<SearchResultModel>(responseContent);
             return deserializedResponse;
         }
         return null;

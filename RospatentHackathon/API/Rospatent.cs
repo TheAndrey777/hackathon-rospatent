@@ -7,8 +7,9 @@ public class Query
     public string qn { get; set; }
     public int limit { get; set; }
     public int offset { get; set; }
+    public string pre_tag { get; } = "<span style=\"background-color: #ffff00;\">";
+    public string post_tag { get; } = "</span>";
     public string sort { get; set; }
-    //public int include_facets { get; } = 1;
     public QueryFilter filter { get; set; }
 }
 
@@ -64,7 +65,11 @@ public class Ids
 public class SimilarSearchQuery
 {
     public string type_search { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string pat_id { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string pat_text { get; set; }
     public int count { get; set; }
 }
