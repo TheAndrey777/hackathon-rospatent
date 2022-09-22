@@ -37,7 +37,7 @@
                         <VerticalStackLayout>
                             <Label Text ="Автор"/>
                             <Border StrokeShape="RoundRectangle 7,7,7,7">
-                                <Entry  ClearButtonVisibility="WhileEditing" Text="{Binding Author}" WidthRequest="170" HorizontalOptions="Start"/>
+                                <Entry ClearButtonVisibility="WhileEditing" Text="{Binding Author}" WidthRequest="170" HorizontalOptions="Start"/>
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout>
@@ -76,7 +76,7 @@
                     <ImageButton Grid.Column="2" Clicked="PS" WidthRequest="35" HeightRequest="35" BorderWidth="2" HorizontalOptions="Start" Source="Resources/Images/arrow_left_solid.svg"/>
                     <Label Text="Тип сортировки: "/>
                     <Border StrokeShape="RoundRectangle 7,7,7,7" Padding="3">
-                        <Picker x:Name="SortPicker" SelectedIndex="{Binding SortIndex, Mode=TwoWay}">
+                        <Picker HorizontalTextAlignment="Center" x:Name="SortPicker" SelectedIndex="{Binding SortIndex, Mode=TwoWay}">
                             <Picker.Items>
                                 <x:String>По релевантности</x:String>
                                 <x:String>По дате публикации (возр.)</x:String>
