@@ -102,12 +102,6 @@ public class Application
     public string filing_date { get; set; }
 }
 
-public class Biblio
-{
-    public Ru ru { get; set; }
-    public En en { get; set; }
-    public Uk uk { get; set; }
-}
 
 public class CitationsParsed
 {
@@ -131,10 +125,10 @@ public class Document
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public Biblio biblio { get; set; }
-    public Abstract @abstract { get; set; }
-    public Claims claims { get; set; }
-    public Description description { get; set; }
+    public Dictionary<string, LangBiblio> biblio { get; set; }
+    public Dictionary<string, string> @abstract { get; set; }
+    public Dictionary<string, string> claims { get; set; }
+    public Dictionary<string, string> description { get; set; }
     public List<Drawing> drawings { get; set; }
     public string id { get; set; } 
     public string index { get; set; }
@@ -160,7 +154,7 @@ public class Datum
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public Biblio biblio { get; set; }
+    public JsonElement biblio { get; set; }
     public List<Drawing> drawings { get; set; }
     public string id { get; set; }
     public string index { get; set; }
@@ -198,31 +192,13 @@ public class Drawing
     public string height { get; set; }
 }
 
-public class Ru
+public class LangBiblio
 {
     public string citations { get; set; }
     public List<Inventor> inventor { get; set; }
     public string title { get; set; }
     public List<Patentee> patentee { get; set; }
     public List<CitationsParsed> citations_parsed { get; set; }
-    public List<Applicant> applicant { get; set; }
-}
-
-public class En
-{
-    public List<Inventor> inventor { get; set; }
-    public string title { get; set; }
-    public List<Patentee> patentee { get; set; }
-    public List<Applicant> applicant { get; set; }
-    public string citations { get; set; }
-    public List<CitationsParsed> citations_parsed { get; set; }
-}
-
-public class Uk
-{
-    public List<Inventor> inventor { get; set; }
-    public string title { get; set; }
-    public List<Patentee> patentee { get; set; }
     public List<Applicant> applicant { get; set; }
 }
 
@@ -230,7 +206,8 @@ public class Hit
 {
     public Common common { get; set; }
     public Meta meta { get; set; }
-    public Biblio biblio { get; set; }
+    public Dictionary<string, LangBiblio> biblio { get; set; }
+    public string lang => string.Join(", ", biblio.Keys);
     public List<Drawing> drawings { get; set; }
     public string id { get; set; }
     public string index { get; set; }
@@ -303,17 +280,4 @@ public class Source
     public string from { get; set; }
 }
 
-public class Description
-{
-    public string ru { get; set; }
-}
 
-public class Abstract
-{
-    public string ru { get; set; }
-}
-
-public class Claims
-{
-    public string ru { get; set; }
-}

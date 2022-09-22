@@ -11,12 +11,20 @@ public partial class SearchResultsPage : ContentPage
 		BindingContext = new SearchResultViewModel();
 	}
 
-	private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+	private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 	{
 		if (e.SelectedItem == null || !(e.SelectedItem is Hit selectet))
 			return;
-		Console.WriteLine(selectet.id);
         ((ListView)sender).SelectedItem = null;
+        string[] lang = selectet.lang.Split(", ");
+        string action = lang.FirstOrDefault();
+        if (selectet.lang.Split(", ").Length>1)
+		{
+            action = await DisplayActionSheet("Предпочитаемый язык", "Cancel", null, selectet.lang.Split(", "));
+            if (action == "Cancel")
+                return;
+        }
         Crutch.MyTab.GoToRead();
+        Crutch.DocumentView.DownloadDoc(selectet.id, action);
     }
 }

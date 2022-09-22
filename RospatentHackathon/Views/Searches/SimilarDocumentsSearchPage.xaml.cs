@@ -6,4 +6,8 @@ public partial class SimilarDocumentsSearchPage : ContentPage
 	{
 		InitializeComponent();
 	}
+    public void PS(object sender, System.EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
 }

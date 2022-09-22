@@ -23,20 +23,20 @@ public class SearchResultViewModel : INotifyPropertyChanged
     }
 
     public string _loadedInfo = "Выполните поисковый запрос";
-    public string LoadedInfo 
-    { 
-        get=> _loadedInfo;
+    public string LoadedInfo
+    {
+        get => _loadedInfo;
         private set
         {
             _loadedInfo = value;
             OnPropertyChanged();
         }
     }
-    
+
     public string _searchType = "Выполните поисковый запрос";
     public string SearchType
-    { 
-        get=> _searchType;
+    {
+        get => _searchType;
         private set
         {
             _searchType = value;
@@ -56,14 +56,14 @@ public class SearchResultViewModel : INotifyPropertyChanged
 
     private async void Search()
     {
-        if(_model == null)
+        if (_model == null)
             return;
         _loading = true;
         Crutch.MyTab.GoToList();
         LoadedInfo = $"Загрузка..";
         Data = new SearchResultModel();
         Data = await HttpApiClient.Search(_model);
-        LoadedInfo = $"Showed {(_model.Page - 1) *_model.DocumentsLimit+1}-{(_model.Page - 1) * _model.DocumentsLimit+Data.Downloaded}" +
+        LoadedInfo = $"Showed {(_model.Page - 1) * _model.DocumentsLimit + 1}-{(_model.Page - 1) * _model.DocumentsLimit + Data.Downloaded}" +
                     $" из {Data.total}";
         _loading = false;
         UpdateButtons();
@@ -80,7 +80,7 @@ public class SearchResultViewModel : INotifyPropertyChanged
                     _model.Page--;
                     Search();
                     UpdateButtons();
-                }, (param) => _model!=null&&_model.Page > 1 && !_loading);
+                }, (param) => _model != null && _model.Page > 1 && !_loading);
             return _prevPageCommand;
         }
     }
@@ -97,7 +97,7 @@ public class SearchResultViewModel : INotifyPropertyChanged
                     Console.WriteLine($"modelPage:{_model.Page}");
                     Search();
                     UpdateButtons();
-                }, (param) => true && !_loading);
+                }, (param) => _model != null && Data != null && ((_model.Page) * _model.DocumentsLimit <= Data.total) && !_loading);
             return _nextPageCommand;
         }
     }

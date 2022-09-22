@@ -2,14 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.SimilarDocumentsSearchPage"
-             Title="SimilarDocumentsSearchPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            FontAttributes="Italic"
-            FontSize="44"
-            FontFamily="Bookman"/>
-    </VerticalStackLayout>
+             Title="SimilarDocumentsSearchPage"
+             NavigationPage.HasNavigationBar ="False"
+             NavigationPage.HasBackButton="False">
+    <ScrollView Padding="0">
+        <VerticalStackLayout>
+            <Button Grid.Row="0" Text="Назад" Clicked="PS" FontSize="12" CornerRadius="5" BorderWidth="1" HorizontalOptions="Start"/>
+            <Picker Grid.Row="1" Title = "Выберите тип: " HeightRequest="70" SelectedIndex="{Binding TypeIndex, Mode=TwoWay}">
+                <Picker.Items>
+                    <x:String>По тексту</x:String>
+                    <x:String>По ID документа</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Grid.Row="3" Text="Поиск" FontSize="16" BorderWidth="1" Command="{Binding SearchCommand}" Margin="8"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

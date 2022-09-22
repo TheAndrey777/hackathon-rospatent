@@ -4,6 +4,9 @@
              x:Class="RospatentHackathon.Views.DocumentViewPage"
              Title="DocumentViewPage">
 
-    <WebView Source="/Resources/Styles/htmlvar.html" />
-
+    <WebView BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
+            <WebView.Source>
+                <HtmlWebViewSource x:Name="HTMLPage" Html="" />
+            </WebView.Source>
+    </WebView>
 </ContentPage>

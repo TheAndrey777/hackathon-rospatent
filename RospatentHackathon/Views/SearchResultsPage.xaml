@@ -9,11 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="48"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -38,31 +34,34 @@
                         <Border Margin="8" Padding="19" StrokeShape="RoundRectangle 15, 15, 15, 15">
                             <VerticalStackLayout>
                                 <Label Text="{Binding snippet.title}" TextType="Html" FontAttributes="Bold" FontSize="Large"/>
+                                <VerticalStackLayout Spacing="16" Grid.Column="0">
+                                    <Label Text="{Binding id, StringFormat='Документ: {0}'}"/>
+                                    <Label Text="{Binding snippet.inventor}"/>
+                                </VerticalStackLayout>
+                                <Label Text="{Binding snippet.description}" TextType="Html" FontSize="Small"/>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <HorizontalStackLayout Spacing="16" Grid.Column="0">
-                                        <Label Text="{Binding id, StringFormat='Документ: {0}'}"/>
-                                        <Label Text="{Binding snippet.inventor}"/>
-                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding common.publication_date}" Margin="6,0,0,0" HorizontalOptions="Start"/>
+                                    <Label Grid.Column="1" Text="{Binding lang}" Margin="0,0,6,0" HorizontalOptions="End"/>
                                 </Grid>
-                                <Label Text="{Binding snippet.description}" TextType="Html" FontSize="Small"/>
-                                <Label Text="{Binding common.publication_date}"/>
                             </VerticalStackLayout>
                         </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1" MaximumHeightRequest="48" VerticalOptions="End">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Text="Назад" HorizontalOptions="Start" Command="{Binding PrevPageCommand}"/>
-            <Button Text="Вперёд" HorizontalOptions="End" Grid.Column="1" Command="{Binding NextPageCommand}"/>
+            <ImageButton Grid.Column="0" Command="{Binding PrevPageCommand}" Margin="6" WidthRequest="40" HeightRequest="40" BorderWidth="2" HorizontalOptions="Start" Source="Resources/Images/arrow_left_solid.svg"/>
+            <ImageButton Grid.Column="1" Command="{Binding NextPageCommand}" Margin="6" WidthRequest="40" HeightRequest="40" BorderWidth="2" HorizontalOptions="End" Source="Resources/Images/arrow_right_solid.svg"/>
+            <!--<Button Text="Назад" MaximumHeightRequest="48" HorizontalOptions="Start" Command="{Binding PrevPageCommand}"/>
+            <Button Text="Вперёд" MaximumHeightRequest="48" HorizontalOptions="End" Grid.Column="1" Command="{Binding NextPageCommand}"/>-->
         </Grid>
     </Grid>
 </ContentPage>
