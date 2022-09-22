@@ -104,9 +104,14 @@ public class Application
 
 public class Biblio
 {
-    public Ru ru { get; set; }
-    public En en { get; set; }
-    public Uk uk { get; set; }
+    public LangBiblio ru { get; set; }
+    public LangBiblio en { get; set; }
+    public LangBiblio uk { get; set; }
+
+    public override string ToString()
+    {
+        return $"";
+    }
 }
 
 public class CitationsParsed
@@ -198,31 +203,13 @@ public class Drawing
     public string height { get; set; }
 }
 
-public class Ru
+public class LangBiblio
 {
     public string citations { get; set; }
     public List<Inventor> inventor { get; set; }
     public string title { get; set; }
     public List<Patentee> patentee { get; set; }
     public List<CitationsParsed> citations_parsed { get; set; }
-    public List<Applicant> applicant { get; set; }
-}
-
-public class En
-{
-    public List<Inventor> inventor { get; set; }
-    public string title { get; set; }
-    public List<Patentee> patentee { get; set; }
-    public List<Applicant> applicant { get; set; }
-    public string citations { get; set; }
-    public List<CitationsParsed> citations_parsed { get; set; }
-}
-
-public class Uk
-{
-    public List<Inventor> inventor { get; set; }
-    public string title { get; set; }
-    public List<Patentee> patentee { get; set; }
     public List<Applicant> applicant { get; set; }
 }
 

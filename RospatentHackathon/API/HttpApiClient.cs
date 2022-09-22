@@ -108,6 +108,7 @@ public class HttpApiClient
         if (response.IsSuccessStatusCode)
         {
             string responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseContent);
             Document deserializedResponse = JsonSerializer.Deserialize<Document>(responseContent);
             return deserializedResponse;
         }

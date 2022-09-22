@@ -17,7 +17,7 @@ public partial class SearchResultsPage : ContentPage
 			return;
 		Console.WriteLine(selectet.id);
         ((ListView)sender).SelectedItem = null;
-        Crutch.MyTab.GoToRead();
+        //Crutch.MyTab.GoToRead();
         Crutch.DocumentView.DownloadDoc(selectet.id);
     }
 }
