@@ -35,7 +35,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Border Margin="8">
+                        <Border Margin="8" Padding="19" StrokeShape="RoundRectangle 15, 15, 15, 15">
                             <VerticalStackLayout>
                                 <Label Text="{Binding snippet.title}" TextType="Html" FontAttributes="Bold" FontSize="Large"/>
                                 <Grid>
@@ -47,9 +47,9 @@
                                         <Label Text="{Binding id, StringFormat='Документ: {0}'}"/>
                                         <Label Text="{Binding snippet.inventor}"/>
                                     </HorizontalStackLayout>
-                                    <Label Grid.Column="1" Text="{Binding common.publication_date}" HorizontalOptions="End" Margin="12,0,0,0"/>
                                 </Grid>
                                 <Label Text="{Binding snippet.description}" TextType="Html" FontSize="Small"/>
+                                <Label Text="{Binding common.publication_date}"/>
                             </VerticalStackLayout>
                         </Border>
                     </ViewCell>
