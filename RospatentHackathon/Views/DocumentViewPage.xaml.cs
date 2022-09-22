@@ -12,12 +12,13 @@ public partial class DocumentViewPage : ContentPage
     public DocumentViewPage()
     {
         InitializeComponent();
-        DownloadDoc();
+        Crutch.DocumentView = this;
+        DownloadDoc("RU2358138C1_20090610");
     }
 
-    private async void DownloadDoc()
+    public async void DownloadDoc(string id)
     {
-        Document = await HttpApiClient.GetDocument("RU2358138C1_20090610");
+        Document = await HttpApiClient.GetDocument(id);
         title.Text = "�� ������ �� ���� ��������";
         if (Document == null) return;
         autor_area.Text = "�����: " + Document.biblio.ru.inventor[0].name;

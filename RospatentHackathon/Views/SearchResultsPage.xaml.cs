@@ -15,8 +15,9 @@ public partial class SearchResultsPage : ContentPage
 	{
 		if (e.SelectedItem == null || !(e.SelectedItem is Hit selectet))
 			return;
+		Console.WriteLine(selectet.id);
         ((ListView)sender).SelectedItem = null;
-
-		Console.WriteLine();
+        Crutch.MyTab.GoToRead();
+        Crutch.DocumentView.DownloadDoc(selectet.id);
     }
 }
