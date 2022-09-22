@@ -5,7 +5,8 @@
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             android:TabbedPage.ToolbarPlacement="Bottom"
             NavigationPage.HasNavigationBar ="False"
-            NavigationPage.HasBackButton="False">
+            NavigationPage.HasBackButton="False"
+            android:TabbedPage.IsSwipePagingEnabled="False">
     <NavigationPage Title="Поиск"
                     IconImageSource="Recources/Images/search.svg"
                     NavigationPage.HasNavigationBar="False">
