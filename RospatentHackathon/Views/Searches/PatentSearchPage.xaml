@@ -19,55 +19,53 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <HorizontalStackLayout Grid.Row="0" Spacing="20" Padding="0">
-                    <ImageButton Source="Resources/Images/search.svg" WidthRequest="30" HeightRequest="30"/>
-                    <Border StrokeShape="RoundRectangle 7,7,7,7" Padding="3">
-                        <Entry FontFamily="RobotoFlex" Text="{Binding Request}" Margin="10" VerticalTextAlignment="Center" HeightRequest="12" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" FontAutoScalingEnabled="True" Placeholder="Поиск..." PlaceholderColor="Gray"/>
-                    </Border>
-                </HorizontalStackLayout>
-                <VerticalStackLayout Grid.Row="1" Spacing="10" Padding="10">
-                    <Grid Padding="0" ColumnSpacing="25">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <VerticalStackLayout Spacing="20">
-                            <VerticalStackLayout Grid.Column="0">
-                                <Label Text="Номер документа" HorizontalOptions="Start"/>
-                                <Border StrokeShape="RoundRectangle 7,7,7,7" Padding="3">
-                                    <Entry HeightRequest="40" Text="{Binding DocumentNumber}" WidthRequest="170" HorizontalOptions="Start"/>
-                                </Border>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout>
-                                <Label Text ="Автор"/>
-                                <Border StrokeShape="RoundRectangle 7,7,7,7" Padding="3">
-                                    <Entry  ClearButtonVisibility="WhileEditing" Text="{Binding Author}" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
-                                </Border>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout>
-                                <Label Text ="Патентообладатель"/>
-                                <Border StrokeShape="RoundRectangle 7,7,7,7" Padding="3">
-                                    <Entry ClearButtonVisibility="WhileEditing" Text="{Binding Patentee}" HeightRequest="40" WidthRequest="170" HorizontalOptions="Start"/>
-                                </Border>
-                            </VerticalStackLayout>
+                <Border Grid.Row="0" StrokeShape="RoundRectangle 7,7,7,7" Padding="3" Margin="8">
+                    <Entry FontFamily="RobotoFlex" Text="{Binding Request}"  VerticalTextAlignment="Center" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing"  Placeholder="Поиск..." PlaceholderColor="Gray"/>
+                </Border>
+                <Grid Padding="0" Grid.Row="1" ColumnSpacing="25" Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout Spacing="20">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Номер документа" HorizontalOptions="Start"/>
+                            <Border StrokeShape="RoundRectangle 7,7,7,7">
+                                <Entry Text="{Binding DocumentNumber}" WidthRequest="170" HorizontalOptions="Start"/>
+                            </Border>
                         </VerticalStackLayout>
-                        <VerticalStackLayout Spacing="20" Grid.Column="1">
-                            <VerticalStackLayout>
-                                <Label Text="Дата публикации от:"/>
-                                <Border StrokeShape="RoundRectangle 7,7,7,7">
-                                    <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateFrom}"/>
-                                </Border>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout>
-                                <Label Text="Дата публикации до:"/>
-                                <Border StrokeShape="RoundRectangle 7,7,7,7">
-                                    <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateTo}"/>
-                                </Border>
-                            </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text ="Автор"/>
+                            <Border StrokeShape="RoundRectangle 7,7,7,7">
+                                <Entry  ClearButtonVisibility="WhileEditing" Text="{Binding Author}" WidthRequest="170" HorizontalOptions="Start"/>
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text ="Патентообладатель"/>
+                            <Border StrokeShape="RoundRectangle 7,7,7,7">
+                                <Entry ClearButtonVisibility="WhileEditing" Text="{Binding Patentee}" WidthRequest="170" HorizontalOptions="Start"/>
+                            </Border>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="20" Grid.Column="1">
+                        <VerticalStackLayout>
+                            <Label Text="Дата публикации от:"/>
+                            <Border StrokeShape="RoundRectangle 7,7,7,7">
+                                <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateFrom}"/>
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text="Дата публикации до:"/>
+                            <Border StrokeShape="RoundRectangle 7,7,7,7">
+                                <DatePicker HorizontalOptions="Center" Date="{Binding PublicationDateTo}"/>
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label Text=""/>
                             <Button Text ="Очистить" FontSize="16" Command="{Binding ClearCommand}"/>
                         </VerticalStackLayout>
-                    </Grid>
-                </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
