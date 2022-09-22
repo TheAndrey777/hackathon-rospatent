@@ -22,15 +22,18 @@
                 <VerticalStackLayout>
                     <ImageButton Clicked="PS" Margin="10" WidthRequest="35" HeightRequest="35" BorderWidth="2" HorizontalOptions="Start" Source="Resources/Images/arrow_left_solid.svg"/>
                     <Border StrokeShape="RoundRectangle 7,7,7,7" Padding="3" Margin="5">
-                        <Picker Title = "Выберите тип" HorizontalTextAlignment="Center" HeightRequest="45" SelectedIndex="{Binding TypeIndex, Mode=TwoWay}">
+                        <Picker Title = "Выберите тип" HorizontalTextAlignment="Center" SelectedIndex="{Binding SearchTypeIndex, Mode=TwoWay}">
                             <Picker.Items>
                                 <x:String>По тексту</x:String>
                                 <x:String>По ID документа</x:String>
                             </Picker.Items>
                         </Picker>
                     </Border>
-                    <Border Grid.Row="0" StrokeShape="RoundRectangle 7,7,7,7" Padding="3" Margin="5">
+                    <Border Grid.Row="0" StrokeShape="RoundRectangle 7,7,7,7" Padding="3" Margin="5" IsVisible="{Binding TextSearchEnable}">
                         <Entry FontFamily="RobotoFlex" HeightRequest="45" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing" Placeholder="Поиск..." PlaceholderColor="Gray"/>
+                    </Border>
+                    <Border Grid.Row="0" StrokeShape="RoundRectangle 7,7,7,7" Padding="3" Margin="5" IsVisible="{Binding IdSearchEnable}">
+                        <Editor FontFamily="RobotoFlex"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="320" HorizontalOptions="Center" Placeholder="Поиск..." PlaceholderColor="Gray"/>
                     </Border>
                 </VerticalStackLayout>
                 <Button Grid.Row="4" Text="Поиск" FontSize="16" Command="{Binding SearchCommand}" Margin="8"/>

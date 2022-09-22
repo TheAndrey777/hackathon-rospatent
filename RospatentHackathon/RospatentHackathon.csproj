@@ -49,6 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Controls\**" />
+	  <Compile Remove="Controls\**" />
+	  <EmbeddedResource Remove="Controls\**" />
+	  <MauiCss Remove="Controls\**" />
+	  <MauiXaml Remove="Controls\**" />
+	  <None Remove="Controls\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Remove="Views\HslColorPage.xaml.cs" />
 	</ItemGroup>
 
@@ -65,10 +74,6 @@
 	  <None Remove="Resources\Images\LArrow.png" />
 	  <None Remove="Resources\Images\search.svg" />
 	  <None Remove="Resources\Images\SFU.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controls\" />
 	</ItemGroup>
 
 	<ItemGroup>
