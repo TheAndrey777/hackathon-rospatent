@@ -20,7 +20,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" StrokeShape="RoundRectangle 7,7,7,7" Padding="3" Margin="8">
-                    <Entry FontFamily="RobotoFlex" Text="{Binding Request}"  VerticalTextAlignment="Center" WidthRequest="320" HorizontalOptions="Center" ClearButtonVisibility="WhileEditing"  Placeholder="Поиск..." PlaceholderColor="Gray"/>
+                    <Entry FontFamily="RobotoFlex" Text="{Binding Request}"  VerticalTextAlignment="Center" WidthRequest="320" HorizontalOptions="Fill" ClearButtonVisibility="WhileEditing"  Placeholder="Поиск..." PlaceholderColor="Gray"/>
                 </Border>
                 <Grid Padding="0" Grid.Row="1" ColumnSpacing="25" Margin="16">
                     <Grid.ColumnDefinitions>
