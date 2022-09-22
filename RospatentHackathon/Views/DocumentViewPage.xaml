@@ -3,50 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RospatentHackathon.Views.DocumentViewPage"
              Title="DocumentViewPage">
-    <ScrollView Padding="0">
-        <VerticalStackLayout>
-            <Editor
-                x:Name="autor_area"
-                HorizontalOptions="End"
-                Margin="10, 10, 10, 10"
-                IsReadOnly="True"
-            />
-            <Label
-                x:Name="sejfhiusaehf"
-                HorizontalOptions="End"
-                Margin="10, 10, 10, 10"
-            />
-            <Label
-                x:Name="Author3"
-                HorizontalOptions="End"
-                Margin="10, 10, 10, 10"
-            />
-
-            <!--Название-->
-            <Editor
-                x:Name="title"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Margin="10, 10, 10, 10"
-                IsReadOnly="True"
-            />
-
-            <!--Контент-->
-            <Editor
-                x:Name="body"
-                HorizontalOptions="Start"
-                Margin="10, 10, 10, 10"
-
-                IsReadOnly="True"
-            />
-            <Editor
-                x:Name="date_area"
-                HorizontalOptions="Start"
-                Margin="10, 10, 10, 10"
-                HorizontalTextAlignment="Start"
-                IsReadOnly="True"
-            />
-        </VerticalStackLayout>
-
-    </ScrollView>
+    <WebView>
+        <WebView.Source>
+            <HtmlWebViewSource x:Name="HTMLPage" Html="" />
+        </WebView.Source>
+    </WebView>
 </ContentPage>
