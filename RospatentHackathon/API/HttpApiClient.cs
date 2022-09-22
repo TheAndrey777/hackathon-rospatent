@@ -69,7 +69,7 @@ public class HttpApiClient
         return null;
     }
 
-    public static async Task<SimilarSearchResponse> SimilarSearch(String type, string query, int count)
+    public static async Task<SimilarSearchResultModel> SimilarSearch(String type, string query, int count)
     {
         var payload = new SimilarSearchQuery
         {
@@ -85,7 +85,7 @@ public class HttpApiClient
         if (response.IsSuccessStatusCode)
         {
             var responseContent = await response.Content.ReadAsStringAsync();
-            SimilarSearchResponse deserializedResponse = JsonSerializer.Deserialize<SimilarSearchResponse>(responseContent);
+            SimilarSearchResultModel deserializedResponse = JsonSerializer.Deserialize<SimilarSearchResultModel>(responseContent);
             return deserializedResponse;
         }
         return null;
