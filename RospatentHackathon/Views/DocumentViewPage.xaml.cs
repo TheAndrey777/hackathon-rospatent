@@ -11,17 +11,24 @@ public partial class DocumentViewPage : ContentPage
     public Document Document;
     private Dictionary<string, LangBiblio> biblio => Document.biblio;
     public string searchString;
+    public bool Loading { get; private set; }
+    static readonly string _loadingHtml = @"<style>.lds-ellipsis { position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); } .lds-ellipsis { display: inline-block; position: relative; width: 80px; height: 80px; } .lds-ellipsis div { position: absolute; top: 33px; width: 13px; height: 13px; border-radius: 50%; background: #2a9df4; animation-timing-function: cubic-bezier(0, 1, 1, 0);} .lds-ellipsis div:nth-child(1) { left: 8px; animation: lds-ellipsis1 0.6s infinite; } .lds-ellipsis div:nth-child(2) { left: 8px; animation: lds-ellipsis2 0.6s infinite; } .lds-ellipsis div:nth-child(3) { left: 32px; animation: lds-ellipsis2 0.6s infinite; }.lds-ellipsis div:nth-child(4) { left: 56px; animation: lds-ellipsis3 0.6s infinite; } @keyframes lds-ellipsis1 { 0% { transform: scale(0); } 100% { transform: scale(1); }} @keyframes lds-ellipsis3 { 0% {transform: scale(1); } 100% { transform: scale(0); }} @keyframes lds-ellipsis2 { 0% { transform: translate(0, 0); } 100% { transform: translate(24px, 0); }}</style><div class=""lds-ellipsis""><div></div><div></div><div></div><div></div></div>";
+
 
     public DocumentViewPage()
     {
         InitializeComponent();
         Crutch.DocumentView = this;
-        DownloadDoc("RU2358138C1_20090610", "ru");
+        HTMLPage.Html = _loadingHtml;
     }
 
     public async void DownloadDoc(string id, string preferLang)
     {
-        Console.WriteLine($"Документ: {id}");
+        if (Loading)
+            return;
+        Loading = true;
+        HTMLPage.Html = _loadingHtml;
+        Console.WriteLine($"Документ: {id}, язык: {preferLang}");
         Document = await HttpApiClient.GetDocument(id);
         if (Document == null) return;
         string html = @"<HTML><BODY>";
@@ -71,11 +78,12 @@ public partial class DocumentViewPage : ContentPage
         }
         html += "</BODY></HTML>";
         HTMLPage.Html = html;
+        Loading = false;
     }
 
     private LangBiblio LangForTitle(string preferLang)
     {
-        if (biblio[preferLang].title != null)
+        if (biblio.ContainsKey(preferLang) && biblio[preferLang].title != null)
             return biblio[preferLang];
         foreach (var value in biblio.Values)
             if (value.title != null)
@@ -85,7 +93,7 @@ public partial class DocumentViewPage : ContentPage
     
     private LangBiblio LangForApplicant(string preferLang)
     {
-        if (biblio[preferLang].applicant != null)
+        if (biblio.ContainsKey(preferLang) && biblio[preferLang].applicant != null)
             return biblio[preferLang];
         foreach (var value in biblio.Values)
             if (value.applicant != null)
@@ -95,7 +103,7 @@ public partial class DocumentViewPage : ContentPage
     
     private LangBiblio LangForInventor(string preferLang)
     {
-        if (biblio[preferLang].inventor != null)
+        if (biblio.ContainsKey(preferLang) && biblio[preferLang].inventor != null)
             return biblio[preferLang];
         foreach (var value in biblio.Values)
             if (value.inventor != null)
