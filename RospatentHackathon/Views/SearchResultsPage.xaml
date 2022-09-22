@@ -46,7 +46,7 @@
                                     <HorizontalStackLayout Spacing="16" Grid.Column="0">
                                         <Label Text="{Binding id, StringFormat='Документ: {0}'}"/>
                                         <Label Text="{Binding snippet.inventor}"/>
-                                        <Label Text="{Binding lang}"/>
+                                        <Label Text="{Binding snippet.lang}"/>
                                     </HorizontalStackLayout>
                                 </Grid>
                                 <Label Text="{Binding snippet.description}" TextType="Html" FontSize="Small"/>
