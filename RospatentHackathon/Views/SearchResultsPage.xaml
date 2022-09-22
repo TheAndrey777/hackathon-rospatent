@@ -28,6 +28,7 @@
             Text="{Binding SearchType}"
             VerticalOptions="Center" 
             Margin="0,0,12,0"
+            TextType="Html"
             HorizontalOptions="End" />
         </Grid>
         <ListView ItemsSource="{Binding Data.hits}" Grid.Row="1" ItemSelected="ListView_ItemSelected">
