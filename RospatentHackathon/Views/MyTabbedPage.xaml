@@ -6,7 +6,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             NavigationPage.HasNavigationBar ="False"
             NavigationPage.HasBackButton="False"
-            android:TabbedPage.IsSwipePagingEnabled="False">
+            android:TabbedPage.IsSwipePagingEnabled="false">
     <NavigationPage Title="Поиск"
                     IconImageSource="Recources/Images/search.svg"
                     NavigationPage.HasNavigationBar="False">
